@@ -16,7 +16,7 @@ class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = OneViewModel(context!!)
+        val viewModel = RepositorySearchViewModel(context!!)
         val binding = FragmentRepositorySearchBinding.bind(view)
         val layoutManager = LinearLayoutManager(context!!)
         val dividerItemDecoration =

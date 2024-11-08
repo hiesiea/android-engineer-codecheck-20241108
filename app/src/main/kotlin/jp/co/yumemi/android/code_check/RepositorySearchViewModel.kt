@@ -22,7 +22,7 @@ import java.util.Date
 /**
  * [RepositorySearchFragment] で使う
  */
-class OneViewModel(
+class RepositorySearchViewModel(
     val context: Context,
 ) : ViewModel() {
 
