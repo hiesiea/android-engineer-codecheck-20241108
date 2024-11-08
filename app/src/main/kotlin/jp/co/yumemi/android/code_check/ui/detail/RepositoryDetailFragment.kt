@@ -40,4 +40,9 @@ class RepositoryDetailFragment : Fragment(R.layout.fragment_repository_detail) {
         binding.openIssuesView.text =
             getString(R.string.open_issues_count, args.item.openIssuesCount)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
