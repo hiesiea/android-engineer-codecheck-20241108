@@ -13,7 +13,7 @@ import coil.load
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.FragmentRepositoryDetailBinding
 
-class RepositoryDetailFragment : Fragment(R.layout.fragment_repository_detail) {
+class RepositoryDetailFragment : Fragment() {
     private val args: RepositoryDetailFragmentArgs by navArgs()
 
     private var _binding: FragmentRepositoryDetailBinding? = null
