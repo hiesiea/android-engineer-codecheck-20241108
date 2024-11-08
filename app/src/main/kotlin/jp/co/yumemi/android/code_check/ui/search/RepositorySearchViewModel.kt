@@ -12,6 +12,7 @@ import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import org.json.JSONArray
 import org.json.JSONObject
 
 /**
@@ -30,33 +31,7 @@ class RepositorySearchViewModel : ViewModel() {
             val jsonStr = requestSearchRepositories(inputText = inputText)
             val jsonBody = JSONObject(jsonStr)
             val jsonItems = jsonBody.optJSONArray("items") ?: return@async emptyList()
-            val items = mutableListOf<RepositoryItem>()
-
-            // アイテムの個数分ループし、items に格納する
-            for (i in 0 until jsonItems.length()) {
-                val jsonItem = jsonItems.optJSONObject(i) ?: continue
-                val name = jsonItem.optString("full_name")
-                val ownerIconUrl = jsonItem.optJSONObject("owner")?.optString("avatar_url") ?: ""
-                val language = jsonItem.optString("language")
-                val stargazersCount = jsonItem.optLong("stargazers_count")
-                val watchersCount = jsonItem.optLong("watchers_count")
-                val forksCount = jsonItem.optLong("forks_conut")
-                val openIssuesCount = jsonItem.optLong("open_issues_count")
-
-                items.add(
-                    RepositoryItem(
-                        name = name,
-                        ownerIconUrl = ownerIconUrl,
-                        language = language,
-                        stargazersCount = stargazersCount,
-                        watchersCount = watchersCount,
-                        forksCount = forksCount,
-                        openIssuesCount = openIssuesCount,
-                    ),
-                )
-            }
-
-            return@async items.toList()
+            return@async convertToRepositoryItems(jsonItems = jsonItems)
         }.await()
     }
 
@@ -66,5 +41,32 @@ class RepositorySearchViewModel : ViewModel() {
             parameter("q", inputText)
         }
         return response.receive()
+    }
+
+    private fun convertToRepositoryItems(jsonItems: JSONArray): List<RepositoryItem> {
+        val items = mutableListOf<RepositoryItem>()
+        for (i in 0 until jsonItems.length()) {
+            val jsonItem = jsonItems.optJSONObject(i) ?: continue
+            val name = jsonItem.optString("full_name")
+            val ownerIconUrl = jsonItem.optJSONObject("owner")?.optString("avatar_url") ?: ""
+            val language = jsonItem.optString("language")
+            val stargazersCount = jsonItem.optLong("stargazers_count")
+            val watchersCount = jsonItem.optLong("watchers_count")
+            val forksCount = jsonItem.optLong("forks_conut")
+            val openIssuesCount = jsonItem.optLong("open_issues_count")
+
+            items.add(
+                RepositoryItem(
+                    name = name,
+                    ownerIconUrl = ownerIconUrl,
+                    language = language,
+                    stargazersCount = stargazersCount,
+                    watchersCount = watchersCount,
+                    forksCount = forksCount,
+                    openIssuesCount = openIssuesCount,
+                ),
+            )
+        }
+        return items.toList()
     }
 }
