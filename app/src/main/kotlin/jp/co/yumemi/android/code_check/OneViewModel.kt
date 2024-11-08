@@ -20,7 +20,7 @@ import org.json.JSONObject
 import java.util.Date
 
 /**
- * [OneFragment] で使う
+ * [RepositorySearchFragment] で使う
  */
 class OneViewModel(
     val context: Context,
