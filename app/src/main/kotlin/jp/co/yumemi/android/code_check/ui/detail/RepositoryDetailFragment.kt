@@ -4,7 +4,9 @@
 package jp.co.yumemi.android.code_check.ui.detail
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import coil.load
@@ -17,10 +19,18 @@ class RepositoryDetailFragment : Fragment(R.layout.fragment_repository_detail) {
     private var _binding: FragmentRepositoryDetailBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentRepositoryDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding = FragmentRepositoryDetailBinding.bind(view)
         binding.ownerIconView.load(args.item.ownerIconUrl)
         binding.nameView.text = args.item.name
         binding.languageView.text = getString(R.string.written_language, args.item.language)
