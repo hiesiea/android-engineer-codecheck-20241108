@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,8 @@ import jp.co.yumemi.android.code_check.databinding.FragmentRepositorySearchBindi
 class RepositorySearchFragment : Fragment() {
     private var _binding: FragmentRepositorySearchBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: RepositorySearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +31,6 @@ class RepositorySearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = RepositorySearchViewModel()
         val layoutManager = LinearLayoutManager(context)
         val dividerItemDecoration =
             DividerItemDecoration(context, layoutManager.orientation)
