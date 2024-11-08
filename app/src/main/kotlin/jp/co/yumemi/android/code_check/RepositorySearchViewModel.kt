@@ -31,7 +31,7 @@ class RepositorySearchViewModel(
      * @param inputText 検索するキーワード
      * @return 検索結果
      */
-    fun searchResults(inputText: String): List<Item> = runBlocking {
+    fun searchResults(inputText: String): List<RepositoryItem> = runBlocking {
         val client = HttpClient(Android)
 
         return@runBlocking GlobalScope.async {
@@ -41,7 +41,7 @@ class RepositorySearchViewModel(
             }
             val jsonBody = JSONObject(response.receive<String>())
             val jsonItems = jsonBody.optJSONArray("items")!!
-            val items = mutableListOf<Item>()
+            val items = mutableListOf<RepositoryItem>()
 
             // アイテムの個数分ループし、items に格納する
             for (i in 0 until jsonItems.length()) {
@@ -55,7 +55,7 @@ class RepositorySearchViewModel(
                 val openIssuesCount = jsonItem.optLong("open_issues_count")
 
                 items.add(
-                    Item(
+                    RepositoryItem(
                         name = name,
                         ownerIconUrl = ownerIconUrl,
                         language = context.getString(R.string.written_language, language),
