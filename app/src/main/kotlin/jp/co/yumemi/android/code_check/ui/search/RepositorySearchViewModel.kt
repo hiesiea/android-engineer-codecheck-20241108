@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
+import timber.log.Timber
 
 /**
  * [RepositorySearchFragment] で使う
@@ -31,10 +32,15 @@ class RepositorySearchViewModel : ViewModel() {
      * @return 検索結果
      */
     fun searchRepositories(inputText: String) = viewModelScope.launch {
-        val jsonStr = requestSearchRepositories(inputText = inputText)
-        val jsonBody = JSONObject(jsonStr)
-        val jsonItems = jsonBody.optJSONArray("items") ?: return@launch
-        _repositoryItems.value = convertToRepositoryItems(jsonItems = jsonItems)
+        try {
+            val jsonStr = requestSearchRepositories(inputText = inputText)
+            val jsonBody = JSONObject(jsonStr)
+            val jsonItems = jsonBody.optJSONArray("items") ?: return@launch
+            _repositoryItems.value = convertToRepositoryItems(jsonItems = jsonItems)
+        } catch (throwable: Throwable) {
+            Timber.e(throwable)
+            _repositoryItems.value = emptyList()
+        }
     }
 
     private suspend fun requestSearchRepositories(inputText: String): String {
