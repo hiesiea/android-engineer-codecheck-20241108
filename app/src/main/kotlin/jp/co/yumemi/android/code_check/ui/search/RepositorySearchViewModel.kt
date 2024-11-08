@@ -1,6 +1,5 @@
 package jp.co.yumemi.android.code_check.ui.search
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
@@ -9,7 +8,6 @@ import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
-import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -19,9 +17,7 @@ import org.json.JSONObject
 /**
  * [RepositorySearchFragment] で使う
  */
-class RepositorySearchViewModel(
-    val context: Context,
-) : ViewModel() {
+class RepositorySearchViewModel : ViewModel() {
 
     /**
      * 与えられたキーワードをもとに検索処理を行う
@@ -55,7 +51,7 @@ class RepositorySearchViewModel(
                     RepositoryItem(
                         name = name,
                         ownerIconUrl = ownerIconUrl,
-                        language = context.getString(R.string.written_language, language),
+                        language = language,
                         stargazersCount = stargazersCount,
                         watchersCount = watchersCount,
                         forksCount = forksCount,

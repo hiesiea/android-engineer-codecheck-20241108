@@ -23,10 +23,11 @@ class RepositoryDetailFragment : Fragment(R.layout.fragment_repository_detail) {
         binding = FragmentRepositoryDetailBinding.bind(view)
         _binding.ownerIconView.load(args.item.ownerIconUrl)
         _binding.nameView.text = args.item.name
-        _binding.languageView.text = args.item.language
+        _binding.languageView.text = getString(R.string.written_language, args.item.language)
         _binding.starsView.text = getString(R.string.stars_count, args.item.stargazersCount)
         _binding.watchersView.text = getString(R.string.watchers_count, args.item.watchersCount)
         _binding.forksView.text = getString(R.string.forks_count, args.item.forksCount)
-        _binding.openIssuesView.text = getString(R.string.open_issues_count, args.item.openIssuesCount)
+        _binding.openIssuesView.text =
+            getString(R.string.open_issues_count, args.item.openIssuesCount)
     }
 }
