@@ -27,11 +27,8 @@ class RepositorySearchViewModel : ViewModel() {
      */
     fun searchResults(inputText: String): List<RepositoryItem> = runBlocking {
         return@runBlocking GlobalScope.async {
-            val response: HttpResponse = client.get("https://api.github.com/search/repositories") {
-                header("Accept", "application/vnd.github.v3+json")
-                parameter("q", inputText)
-            }
-            val jsonBody = JSONObject(response.receive<String>())
+            val jsonStr = requestSearchRepositories(inputText = inputText)
+            val jsonBody = JSONObject(jsonStr)
             val jsonItems = jsonBody.optJSONArray("items") ?: return@async emptyList()
             val items = mutableListOf<RepositoryItem>()
 
@@ -61,5 +58,13 @@ class RepositorySearchViewModel : ViewModel() {
 
             return@async items.toList()
         }.await()
+    }
+
+    private suspend fun requestSearchRepositories(inputText: String): String {
+        val response: HttpResponse = client.get("https://api.github.com/search/repositories") {
+            header("Accept", "application/vnd.github.v3+json")
+            parameter("q", inputText)
+        }
+        return response.receive()
     }
 }
