@@ -10,13 +10,11 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import jp.co.yumemi.android.code_check.R
-import jp.co.yumemi.android.code_check.TopActivity
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
-import java.util.Date
 
 /**
  * [RepositorySearchFragment] で使う
@@ -65,8 +63,6 @@ class RepositorySearchViewModel(
                     ),
                 )
             }
-
-            TopActivity.lastSearchDate = Date()
 
             return@async items.toList()
         }.await()
