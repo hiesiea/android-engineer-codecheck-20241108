@@ -1,5 +1,5 @@
 ## Issue
-- close #ISSUE_NUMBER
+- #ISSUE_NUMBER
 
 ## 概要（必須）
 - 
