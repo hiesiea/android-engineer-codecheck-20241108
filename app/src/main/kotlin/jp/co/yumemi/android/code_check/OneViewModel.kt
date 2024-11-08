@@ -20,13 +20,17 @@ import org.json.JSONObject
 import java.util.Date
 
 /**
- * TwoFragment で使う
+ * [OneFragment] で使う
  */
 class OneViewModel(
     val context: Context,
 ) : ViewModel() {
 
-    // 検索結果
+    /**
+     * 与えられたキーワードをもとに検索処理を行う
+     * @param inputText 検索するキーワード
+     * @return 検索結果
+     */
     fun searchResults(inputText: String): List<Item> = runBlocking {
         val client = HttpClient(Android)
 
@@ -39,9 +43,7 @@ class OneViewModel(
             val jsonItems = jsonBody.optJSONArray("items")!!
             val items = mutableListOf<Item>()
 
-            /**
-             * アイテムの個数分ループする
-             */
+            // アイテムの個数分ループし、items に格納する
             for (i in 0 until jsonItems.length()) {
                 val jsonItem = jsonItems.optJSONObject(i)!!
                 val name = jsonItem.optString("full_name")
