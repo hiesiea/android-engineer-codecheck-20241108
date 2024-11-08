@@ -10,13 +10,10 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -30,21 +27,6 @@ class RepositorySearchViewModel : ViewModel() {
 
     /**
      * 与えられたキーワードをもとに検索処理を行う
-     * @param inputText 検索するキーワード
-     * @return 検索結果
-     */
-    @Deprecated("searchRepositories に置き換える予定")
-    fun searchResults(inputText: String): List<RepositoryItem> = runBlocking {
-        return@runBlocking GlobalScope.async {
-            val jsonStr = requestSearchRepositories(inputText = inputText)
-            val jsonBody = JSONObject(jsonStr)
-            val jsonItems = jsonBody.optJSONArray("items") ?: return@async emptyList()
-            return@async convertToRepositoryItems(jsonItems = jsonItems)
-        }.await()
-    }
-
-    /**
-     * 与えられたキーワードをもとに検索処理を行う（非同期版）
      * @param inputText 検索するキーワード
      * @return 検索結果
      */
