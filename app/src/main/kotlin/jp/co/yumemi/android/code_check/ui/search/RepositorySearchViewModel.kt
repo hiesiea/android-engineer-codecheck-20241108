@@ -18,6 +18,7 @@ import org.json.JSONObject
  * [RepositorySearchFragment] で使う
  */
 class RepositorySearchViewModel : ViewModel() {
+    private val client = HttpClient(Android)
 
     /**
      * 与えられたキーワードをもとに検索処理を行う
@@ -25,8 +26,6 @@ class RepositorySearchViewModel : ViewModel() {
      * @return 検索結果
      */
     fun searchResults(inputText: String): List<RepositoryItem> = runBlocking {
-        val client = HttpClient(Android)
-
         return@runBlocking GlobalScope.async {
             val response: HttpResponse = client.get("https://api.github.com/search/repositories") {
                 header("Accept", "application/vnd.github.v3+json")
