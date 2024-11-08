@@ -15,11 +15,11 @@ class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = RepositorySearchViewModel(context!!)
+        val viewModel = RepositorySearchViewModel()
         val binding = FragmentRepositorySearchBinding.bind(view)
-        val layoutManager = LinearLayoutManager(context!!)
+        val layoutManager = LinearLayoutManager(context)
         val dividerItemDecoration =
-            DividerItemDecoration(context!!, layoutManager.orientation)
+            DividerItemDecoration(context, layoutManager.orientation)
         val adapter = RepositoryItemListAdapter(
             object : RepositoryItemListAdapter.OnItemClickListener {
                 override fun itemClick(item: RepositoryItem) {

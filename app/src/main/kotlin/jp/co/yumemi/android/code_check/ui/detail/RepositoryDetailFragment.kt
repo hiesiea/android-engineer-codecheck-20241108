@@ -14,19 +14,20 @@ import jp.co.yumemi.android.code_check.databinding.FragmentRepositoryDetailBindi
 class RepositoryDetailFragment : Fragment(R.layout.fragment_repository_detail) {
     private val args: RepositoryDetailFragmentArgs by navArgs()
 
-    private var binding: FragmentRepositoryDetailBinding? = null
-    private val _binding get() = binding!!
+    private var _binding: FragmentRepositoryDetailBinding? = null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentRepositoryDetailBinding.bind(view)
-        _binding.ownerIconView.load(args.item.ownerIconUrl)
-        _binding.nameView.text = args.item.name
-        _binding.languageView.text = args.item.language
-        _binding.starsView.text = getString(R.string.stars_count, args.item.stargazersCount)
-        _binding.watchersView.text = getString(R.string.watchers_count, args.item.watchersCount)
-        _binding.forksView.text = getString(R.string.forks_count, args.item.forksCount)
-        _binding.openIssuesView.text = getString(R.string.open_issues_count, args.item.openIssuesCount)
+        _binding = FragmentRepositoryDetailBinding.bind(view)
+        binding.ownerIconView.load(args.item.ownerIconUrl)
+        binding.nameView.text = args.item.name
+        binding.languageView.text = getString(R.string.written_language, args.item.language)
+        binding.starsView.text = getString(R.string.stars_count, args.item.stargazersCount)
+        binding.watchersView.text = getString(R.string.watchers_count, args.item.watchersCount)
+        binding.forksView.text = getString(R.string.forks_count, args.item.forksCount)
+        binding.openIssuesView.text =
+            getString(R.string.open_issues_count, args.item.openIssuesCount)
     }
 }

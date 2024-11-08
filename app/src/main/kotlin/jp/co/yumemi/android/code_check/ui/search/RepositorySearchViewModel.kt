@@ -1,6 +1,5 @@
 package jp.co.yumemi.android.code_check.ui.search
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
@@ -9,7 +8,6 @@ import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
-import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -19,9 +17,7 @@ import org.json.JSONObject
 /**
  * [RepositorySearchFragment] で使う
  */
-class RepositorySearchViewModel(
-    val context: Context,
-) : ViewModel() {
+class RepositorySearchViewModel : ViewModel() {
 
     /**
      * 与えられたキーワードをもとに検索処理を行う
@@ -37,14 +33,14 @@ class RepositorySearchViewModel(
                 parameter("q", inputText)
             }
             val jsonBody = JSONObject(response.receive<String>())
-            val jsonItems = jsonBody.optJSONArray("items")!!
+            val jsonItems = jsonBody.optJSONArray("items") ?: return@async emptyList()
             val items = mutableListOf<RepositoryItem>()
 
             // アイテムの個数分ループし、items に格納する
             for (i in 0 until jsonItems.length()) {
-                val jsonItem = jsonItems.optJSONObject(i)!!
+                val jsonItem = jsonItems.optJSONObject(i) ?: continue
                 val name = jsonItem.optString("full_name")
-                val ownerIconUrl = jsonItem.optJSONObject("owner")!!.optString("avatar_url")
+                val ownerIconUrl = jsonItem.optJSONObject("owner")?.optString("avatar_url") ?: ""
                 val language = jsonItem.optString("language")
                 val stargazersCount = jsonItem.optLong("stargazers_count")
                 val watchersCount = jsonItem.optLong("watchers_count")
@@ -55,7 +51,7 @@ class RepositorySearchViewModel(
                     RepositoryItem(
                         name = name,
                         ownerIconUrl = ownerIconUrl,
-                        language = context.getString(R.string.written_language, language),
+                        language = language,
                         stargazersCount = stargazersCount,
                         watchersCount = watchersCount,
                         forksCount = forksCount,
