@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import jp.co.yumemi.android.code_check.databinding.FragmentRepositorySearchBinding
 
 class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
