@@ -17,10 +17,8 @@ class OneFragment : Fragment(R.layout.fragment_one) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentOneBinding.bind(view)
-
         val viewModel = OneViewModel(context!!)
-
+        val binding = FragmentOneBinding.bind(view)
         val layoutManager = LinearLayoutManager(context!!)
         val dividerItemDecoration =
             DividerItemDecoration(context!!, layoutManager.orientation)
@@ -31,7 +29,6 @@ class OneFragment : Fragment(R.layout.fragment_one) {
                 }
             },
         )
-
         binding.searchInputText
             .setOnEditorActionListener { editText, action, _ ->
                 if (action == EditorInfo.IME_ACTION_SEARCH) {

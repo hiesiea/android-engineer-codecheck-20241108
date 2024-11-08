@@ -35,11 +35,8 @@ class OneViewModel(
                 header("Accept", "application/vnd.github.v3+json")
                 parameter("q", inputText)
             }
-
             val jsonBody = JSONObject(response.receive<String>())
-
             val jsonItems = jsonBody.optJSONArray("items")!!
-
             val items = mutableListOf<Item>()
 
             /**
