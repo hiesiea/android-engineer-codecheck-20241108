@@ -18,9 +18,9 @@ private val diffUtil = object : DiffUtil.ItemCallback<RepositoryItem>() {
     }
 }
 
-class CustomAdapter(
+class RepositoryItemListAdapter(
     private val itemClickListener: OnItemClickListener,
-) : ListAdapter<RepositoryItem, CustomAdapter.ViewHolder>(diffUtil) {
+) : ListAdapter<RepositoryItem, RepositoryItemListAdapter.ViewHolder>(diffUtil) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 

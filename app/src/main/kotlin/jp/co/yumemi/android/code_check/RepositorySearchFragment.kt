@@ -21,8 +21,8 @@ class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
         val layoutManager = LinearLayoutManager(context!!)
         val dividerItemDecoration =
             DividerItemDecoration(context!!, layoutManager.orientation)
-        val adapter = CustomAdapter(
-            object : CustomAdapter.OnItemClickListener {
+        val adapter = RepositoryItemListAdapter(
+            object : RepositoryItemListAdapter.OnItemClickListener {
                 override fun itemClick(item: RepositoryItem) {
                     gotoRepositoryFragment(item)
                 }
