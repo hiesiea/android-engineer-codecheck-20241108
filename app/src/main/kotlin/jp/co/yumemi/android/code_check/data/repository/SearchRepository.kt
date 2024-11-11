@@ -1,7 +1,7 @@
 package jp.co.yumemi.android.code_check.data.repository
 
 import io.ktor.client.HttpClient
-import io.ktor.client.call.receive
+import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
@@ -16,6 +16,6 @@ class SearchRepository @Inject constructor(
             header("Accept", "application/vnd.github.v3+json")
             parameter("q", inputText)
         }
-        return response.receive()
+        return response.body<String>()
     }
 }
