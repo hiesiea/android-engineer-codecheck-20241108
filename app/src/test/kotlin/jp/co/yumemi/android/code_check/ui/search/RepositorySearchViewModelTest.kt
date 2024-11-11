@@ -55,4 +55,16 @@ class RepositorySearchViewModelTest {
             assertEquals(expected, awaitItem())
         }
     }
+
+    @Test
+    fun `APIからエラーが返ってきた場合、repositoryItems に空のデータが設定されること`() = runTest {
+        whenever(searchRepository.requestSearchRepositories(any())).thenThrow(IllegalStateException("テスト"))
+
+        viewModel.searchRepositories(inputText = "テスト")
+
+        viewModel.repositoryItems.test {
+            val expected = emptyList<RepositoryItem>()
+            assertEquals(expected, awaitItem())
+        }
+    }
 }
