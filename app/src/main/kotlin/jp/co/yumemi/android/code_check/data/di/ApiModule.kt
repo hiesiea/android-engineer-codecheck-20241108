@@ -7,6 +7,8 @@ import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import jp.co.yumemi.android.code_check.data.repository.SearchRepository
 import kotlinx.serialization.json.Json
@@ -25,6 +27,9 @@ object ApiModule {
                         ignoreUnknownKeys = true
                     },
                 )
+            }
+            install(Logging) {
+                level = LogLevel.ALL
             }
         }
     }
