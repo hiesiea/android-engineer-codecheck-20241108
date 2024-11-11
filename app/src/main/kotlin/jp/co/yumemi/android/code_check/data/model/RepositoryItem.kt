@@ -13,3 +13,15 @@ data class RepositoryItem(
     val forksCount: Long,
     val openIssuesCount: Long,
 ) : Parcelable
+
+fun SearchRepositoryResponse.toRepositoryItem(): RepositoryItem {
+    return RepositoryItem(
+        name = fullName,
+        ownerIconUrl = owner?.avatarUrl ?: "",
+        language = language ?: "",
+        stargazersCount = stargazersCount,
+        watchersCount = watchersCount,
+        forksCount = forksCount,
+        openIssuesCount = openIssuesCount,
+    )
+}
