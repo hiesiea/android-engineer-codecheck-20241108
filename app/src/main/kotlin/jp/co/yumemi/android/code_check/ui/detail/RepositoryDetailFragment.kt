@@ -7,42 +7,35 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import coil.load
-import jp.co.yumemi.android.code_check.R
-import jp.co.yumemi.android.code_check.databinding.FragmentRepositoryDetailBinding
+import jp.co.yumemi.android.code_check.ui.theme.MainTheme
 
 class RepositoryDetailFragment : Fragment() {
     private val args: RepositoryDetailFragmentArgs by navArgs()
 
-    private var _binding: FragmentRepositoryDetailBinding? = null
-    private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentRepositoryDetailBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.ownerIconView.load(args.item.ownerIconUrl)
-        binding.nameView.text = args.item.name
-        binding.languageView.text = getString(R.string.written_language, args.item.language)
-        binding.starsView.text = getString(R.string.stars_count, args.item.stargazersCount)
-        binding.watchersView.text = getString(R.string.watchers_count, args.item.watchersCount)
-        binding.forksView.text = getString(R.string.forks_count, args.item.forksCount)
-        binding.openIssuesView.text =
-            getString(R.string.open_issues_count, args.item.openIssuesCount)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                MainTheme {
+                    RepositoryDetailScreen(
+                        item = args.item,
+                        onCloseButtonClick = {
+                            if (!findNavController().navigateUp()) {
+                                activity?.finish()
+                            }
+                        },
+                    )
+                }
+            }
+        }
     }
 }
