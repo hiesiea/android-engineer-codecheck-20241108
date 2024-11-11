@@ -14,4 +14,5 @@ buildscript {
 
 plugins {
     id("com.google.dagger.hilt.android") version "2.52" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
 }
