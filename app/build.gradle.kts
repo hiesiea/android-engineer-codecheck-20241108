@@ -55,7 +55,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.3")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 
     implementation("io.ktor:ktor-client-android:2.3.10")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.10")
@@ -75,7 +75,7 @@ dependencies {
 
     testImplementation("org.robolectric:robolectric:4.13")
 
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 
     testImplementation("io.ktor:ktor-client-mock:2.3.10")
