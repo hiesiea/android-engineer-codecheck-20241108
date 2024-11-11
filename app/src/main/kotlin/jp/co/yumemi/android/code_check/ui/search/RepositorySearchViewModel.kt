@@ -2,6 +2,7 @@ package jp.co.yumemi.android.code_check.ui.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
 import io.ktor.client.engine.android.Android
@@ -21,6 +22,7 @@ import timber.log.Timber
 /**
  * [RepositorySearchFragment] で使う
  */
+@HiltViewModel
 class RepositorySearchViewModel : ViewModel() {
     private val client = HttpClient(Android)
     private val _repositoryItems = MutableStateFlow<List<RepositoryItem>>(emptyList())
