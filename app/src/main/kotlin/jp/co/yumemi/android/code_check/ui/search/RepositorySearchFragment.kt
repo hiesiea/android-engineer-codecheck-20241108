@@ -13,10 +13,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import jp.co.yumemi.android.code_check.databinding.FragmentRepositorySearchBinding
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class RepositorySearchFragment : Fragment() {
     private var _binding: FragmentRepositorySearchBinding? = null
     private val binding get() = _binding!!

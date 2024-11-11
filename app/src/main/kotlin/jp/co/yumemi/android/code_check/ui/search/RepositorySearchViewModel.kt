@@ -2,9 +2,9 @@ package jp.co.yumemi.android.code_check.ui.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
-import io.ktor.client.engine.android.Android
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
@@ -17,12 +17,15 @@ import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * [RepositorySearchFragment] で使う
  */
-class RepositorySearchViewModel : ViewModel() {
-    private val client = HttpClient(Android)
+@HiltViewModel
+class RepositorySearchViewModel @Inject constructor(
+    private val client: HttpClient,
+) : ViewModel() {
     private val _repositoryItems = MutableStateFlow<List<RepositoryItem>>(emptyList())
     val repositoryItems: StateFlow<List<RepositoryItem>> = _repositoryItems.asStateFlow()
 
