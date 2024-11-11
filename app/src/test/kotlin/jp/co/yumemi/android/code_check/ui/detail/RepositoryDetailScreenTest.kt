@@ -2,7 +2,7 @@ package jp.co.yumemi.android.code_check.ui.detail
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
-import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onNodeWithTag
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import org.junit.Rule
 import org.junit.runner.RunWith
@@ -33,6 +33,6 @@ class RepositoryDetailScreenTest {
         }
 
         rule.onNodeWithContentDescription("ownerIconUrl").assertExists()
-        rule.onNodeWithText("Written in Assembly").assertExists()
+        rule.onNodeWithTag("language").assertExists()
     }
 }
