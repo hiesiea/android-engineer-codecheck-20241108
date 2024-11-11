@@ -6,6 +6,7 @@ plugins {
     id("kotlinx-serialization")
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.dagger.hilt.android")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
