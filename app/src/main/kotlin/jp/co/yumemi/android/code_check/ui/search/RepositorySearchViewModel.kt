@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import org.json.JSONArray
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -37,32 +36,5 @@ class RepositorySearchViewModel @Inject constructor(
             Timber.e(throwable)
             _repositoryItems.value = emptyList()
         }
-    }
-
-    private fun convertToRepositoryItems(jsonItems: JSONArray): List<RepositoryItem> {
-        val items = mutableListOf<RepositoryItem>()
-        for (i in 0 until jsonItems.length()) {
-            val jsonItem = jsonItems.optJSONObject(i) ?: continue
-            val name = jsonItem.optString("full_name")
-            val ownerIconUrl = jsonItem.optJSONObject("owner")?.optString("avatar_url") ?: ""
-            val language = jsonItem.optString("language")
-            val stargazersCount = jsonItem.optLong("stargazers_count")
-            val watchersCount = jsonItem.optLong("watchers_count")
-            val forksCount = jsonItem.optLong("forks_count")
-            val openIssuesCount = jsonItem.optLong("open_issues_count")
-
-            items.add(
-                RepositoryItem(
-                    name = name,
-                    ownerIconUrl = ownerIconUrl,
-                    language = language,
-                    stargazersCount = stargazersCount,
-                    watchersCount = watchersCount,
-                    forksCount = forksCount,
-                    openIssuesCount = openIssuesCount,
-                ),
-            )
-        }
-        return items.toList()
     }
 }
