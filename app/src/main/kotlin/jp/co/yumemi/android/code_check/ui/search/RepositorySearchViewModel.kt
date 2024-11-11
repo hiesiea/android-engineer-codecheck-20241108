@@ -4,13 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
+import jp.co.yumemi.android.code_check.data.model.toRepositoryItem
 import jp.co.yumemi.android.code_check.data.repository.SearchRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.json.JSONArray
-import org.json.JSONObject
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -31,10 +31,8 @@ class RepositorySearchViewModel @Inject constructor(
      */
     fun searchRepositories(inputText: String) = viewModelScope.launch {
         try {
-            val jsonStr = searchRepository.requestSearchRepositories(inputText = inputText)
-            val jsonBody = JSONObject(jsonStr)
-            val jsonItems = jsonBody.optJSONArray("items") ?: return@launch
-            _repositoryItems.value = convertToRepositoryItems(jsonItems = jsonItems)
+            val response = searchRepository.requestSearchRepositories(inputText = inputText)
+            _repositoryItems.value = response.items.map { it.toRepositoryItem() }
         } catch (throwable: Throwable) {
             Timber.e(throwable)
             _repositoryItems.value = emptyList()

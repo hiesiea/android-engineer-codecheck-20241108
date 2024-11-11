@@ -6,16 +6,17 @@ import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
+import jp.co.yumemi.android.code_check.data.model.SearchRepositoriesResponse
 import javax.inject.Inject
 
 class SearchRepository @Inject constructor(
     private val client: HttpClient,
 ) {
-    suspend fun requestSearchRepositories(inputText: String): String {
+    suspend fun requestSearchRepositories(inputText: String): SearchRepositoriesResponse {
         val response: HttpResponse = client.get("https://api.github.com/search/repositories") {
             header("Accept", "application/vnd.github.v3+json")
             parameter("q", inputText)
         }
-        return response.body<String>()
+        return response.body<SearchRepositoriesResponse>()
     }
 }
