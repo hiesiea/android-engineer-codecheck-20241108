@@ -57,20 +57,24 @@ fun RepositoryDetailScreen(
                 .padding(horizontal = 8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            if (LocalInspectionMode.current) {
-                // Preview 時
-                Image(
-                    painter = painterResource(R.drawable.jetbrains),
-                    contentDescription = null,
-                )
-            } else {
-                // 通常時
-                AsyncImage(
-                    model = item.ownerIconUrl,
-                    contentDescription = null,
-                )
+            item.ownerIconUrl?.let { ownerIconUrl ->
+                if (LocalInspectionMode.current) {
+                    // Preview 時
+                    Image(
+                        painter = painterResource(R.drawable.jetbrains),
+                        contentDescription = "ownerIconUrl",
+                    )
+                } else {
+                    // 通常時
+                    AsyncImage(
+                        model = ownerIconUrl,
+                        contentDescription = "ownerIconUrl",
+                    )
+                }
             }
-            Text(text = stringResource(R.string.written_language, item.language))
+            item.language?.let { language ->
+                Text(text = stringResource(R.string.written_language, language))
+            }
             Text(text = stringResource(R.string.stars_count, item.stargazersCount))
             Text(text = stringResource(R.string.watchers_count, item.watchersCount))
             Text(text = stringResource(R.string.forks_count, item.forksCount))
