@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import jp.co.yumemi.android.code_check.ui.common.OwnerIcon
+import jp.co.yumemi.android.code_check.ui.theme.MainTheme
 
 @Composable
 fun RepositorySearchScreen(
@@ -128,11 +129,13 @@ fun RepositorySearchScreen(
 @Preview
 @Composable
 private fun RepositorySearchScreenPreview() {
-    RepositorySearchScreen(
-        repositoryItems = List(10) {
-            RepositoryItem.fake()
-        },
-        onSearchButtonClick = {},
-        onItemClick = {},
-    )
+    MainTheme {
+        RepositorySearchScreen(
+            repositoryItems = List(10) {
+                RepositoryItem.fake()
+            },
+            onSearchButtonClick = {},
+            onItemClick = {},
+        )
+    }
 }
