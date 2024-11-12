@@ -41,6 +41,9 @@ android {
         buildConfig = true
         compose = true
     }
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
 }
 
 dependencies {
@@ -102,4 +105,11 @@ dependencies {
 // Allow references to generated code
 kapt {
     correctErrorTypes = true
+}
+
+tasks.withType<AbstractTestTask> {
+    // Disable unit tests for release build type (Robolectric limitations)
+    if (name == "testReleaseUnitTest") {
+        enabled = false
+    }
 }
