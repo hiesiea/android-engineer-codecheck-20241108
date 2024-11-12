@@ -13,6 +13,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.testTag
@@ -31,13 +35,16 @@ import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 fun RepositorySearchScreen(
     repositoryItems: List<RepositoryItem>,
     modifier: Modifier = Modifier,
+
 ) {
+    var text by remember { mutableStateOf("Hello") }
+
     Scaffold(
         modifier = modifier,
         topBar = {
             TextField(
-                value = "",
-                onValueChange = {},
+                value = text,
+                onValueChange = { text = it },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(all = 12.dp),
