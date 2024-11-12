@@ -106,3 +106,10 @@ dependencies {
 kapt {
     correctErrorTypes = true
 }
+
+tasks.withType<AbstractTestTask> {
+    // Disable unit tests for release build type (Robolectric limitations)
+    if (name == "testReleaseUnitTest") {
+        enabled = false
+    }
+}
