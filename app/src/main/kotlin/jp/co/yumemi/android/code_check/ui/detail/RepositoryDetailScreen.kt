@@ -58,20 +58,19 @@ fun RepositoryDetailScreen(
                 .padding(horizontal = 8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            item.ownerIconUrl?.let { ownerIconUrl ->
-                if (LocalInspectionMode.current) {
-                    // Preview 時
-                    Image(
-                        painter = painterResource(R.drawable.jetbrains),
-                        contentDescription = "ownerIconUrl",
-                    )
-                } else {
-                    // 通常時
-                    AsyncImage(
-                        model = ownerIconUrl,
-                        contentDescription = "ownerIconUrl",
-                    )
-                }
+            if (LocalInspectionMode.current) {
+                // Preview 時
+                Image(
+                    painter = painterResource(R.drawable.jetbrains),
+                    contentDescription = "ownerIconUrl",
+                )
+            } else {
+                // 通常時
+                AsyncImage(
+                    model = item.ownerIconUrl,
+                    contentDescription = "ownerIconUrl",
+                    error = painterResource(id = R.drawable.empty_image),
+                )
             }
             item.language?.let { language ->
                 Text(

@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class RepositoryItem(
     val name: String,
-    val ownerIconUrl: String?,
+    val ownerIconUrl: String,
     val language: String?,
     val stargazersCount: Long,
     val watchersCount: Long,
@@ -17,7 +17,7 @@ data class RepositoryItem(
 fun SearchRepositoryResponse.toRepositoryItem(): RepositoryItem {
     return RepositoryItem(
         name = fullName,
-        ownerIconUrl = owner?.avatarUrl,
+        ownerIconUrl = owner?.avatarUrl ?: "",
         language = language,
         stargazersCount = stargazersCount,
         watchersCount = watchersCount,
