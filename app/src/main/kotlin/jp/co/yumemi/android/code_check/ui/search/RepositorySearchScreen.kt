@@ -1,11 +1,14 @@
 package jp.co.yumemi.android.code_check.ui.search
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardActions
@@ -44,6 +47,7 @@ fun RepositorySearchScreen(
     repositoryItems: List<RepositoryItem>,
     modifier: Modifier = Modifier,
     onSearchButtonClick: (String) -> Unit,
+    onItemClick: (RepositoryItem) -> Unit,
 ) {
     var text by remember { mutableStateOf("") }
 
@@ -86,6 +90,7 @@ fun RepositorySearchScreen(
             items(repositoryItems) { item ->
                 Row(
                     modifier = Modifier
+                        .clickable { onItemClick(item) }
                         .fillMaxWidth()
                         .padding(all = 8.dp),
                 ) {
@@ -106,6 +111,7 @@ fun RepositorySearchScreen(
                             error = painterResource(id = R.drawable.empty_image),
                         )
                     }
+                    Spacer(modifier = Modifier.width(8.dp))
                     Column {
                         Text(
                             text = item.name,
@@ -147,5 +153,6 @@ private fun RepositorySearchScreenPreview() {
             )
         },
         onSearchButtonClick = {},
+        onItemClick = {},
     )
 }
