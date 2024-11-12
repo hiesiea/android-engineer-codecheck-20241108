@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
+import jp.co.yumemi.android.code_check.ui.common.OwnerIcon
 
 @Composable
 fun RepositorySearchScreen(
@@ -95,23 +96,10 @@ fun RepositorySearchScreen(
                         .fillMaxWidth()
                         .padding(all = 8.dp),
                 ) {
-                    val imageModifier = Modifier.size(80.dp)
-                    if (LocalInspectionMode.current) {
-                        // Preview 時
-                        Image(
-                            painter = painterResource(R.drawable.jetbrains),
-                            contentDescription = "ownerIconUrl",
-                            modifier = imageModifier,
-                        )
-                    } else {
-                        // 通常時
-                        AsyncImage(
-                            model = item.ownerIconUrl,
-                            contentDescription = "ownerIconUrl",
-                            modifier = imageModifier,
-                            error = painterResource(id = R.drawable.empty_image),
-                        )
-                    }
+                    OwnerIcon(
+                        ownerIconUrl = item.ownerIconUrl,
+                        modifier = Modifier.size(80.dp)
+                    )
                     Spacer(modifier = Modifier.width(8.dp))
                     Column {
                         Text(
