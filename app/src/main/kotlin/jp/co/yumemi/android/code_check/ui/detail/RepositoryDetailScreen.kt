@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
+import jp.co.yumemi.android.code_check.ui.common.OwnerIcon
 import jp.co.yumemi.android.code_check.ui.theme.MainTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -58,21 +59,7 @@ fun RepositoryDetailScreen(
                 .padding(horizontal = 8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            item.ownerIconUrl?.let { ownerIconUrl ->
-                if (LocalInspectionMode.current) {
-                    // Preview 時
-                    Image(
-                        painter = painterResource(R.drawable.jetbrains),
-                        contentDescription = "ownerIconUrl",
-                    )
-                } else {
-                    // 通常時
-                    AsyncImage(
-                        model = ownerIconUrl,
-                        contentDescription = "ownerIconUrl",
-                    )
-                }
-            }
+            OwnerIcon(ownerIconUrl = item.ownerIconUrl)
             item.language?.let { language ->
                 Text(
                     text = stringResource(R.string.written_language, language),

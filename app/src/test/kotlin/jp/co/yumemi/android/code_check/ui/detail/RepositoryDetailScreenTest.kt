@@ -37,27 +37,6 @@ class RepositoryDetailScreenTest {
     }
 
     @Test
-    fun `ownerIconUrl に何も設定されていなければ、画像自体表示されないこと`() {
-        rule.setContent {
-            RepositoryDetailScreen(
-                item = RepositoryItem(
-                    name = "dtrupenn/Tetris",
-                    ownerIconUrl = null,
-                    language = "Assembly",
-                    stargazersCount = 1,
-                    watchersCount = 1,
-                    forksCount = 0,
-                    openIssuesCount = 0,
-                ),
-                onCloseButtonClick = {},
-            )
-        }
-
-        rule.onNodeWithContentDescription("ownerIconUrl").assertDoesNotExist()
-        rule.onNodeWithTag("language").assertExists()
-    }
-
-    @Test
     fun `language に何も設定されていなければ、言語自体表示されないこと`() {
         rule.setContent {
             RepositoryDetailScreen(
