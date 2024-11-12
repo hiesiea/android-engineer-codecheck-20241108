@@ -38,7 +38,7 @@ class RepositoryDetailFragment : Fragment() {
                         onShowDetailButtonClick = {
                             val activity = this@RepositoryDetailFragment.activity ?: return@RepositoryDetailScreen
                             val intent = CustomTabsIntent.Builder().build()
-                            intent.launchUrl(activity, Uri.parse(args.item.url))
+                            intent.launchUrl(activity, Uri.parse(args.item.htmlUrl))
                         },
                     )
                 }
