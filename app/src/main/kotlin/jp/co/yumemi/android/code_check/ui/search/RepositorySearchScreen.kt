@@ -8,7 +8,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -23,6 +30,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,9 +43,9 @@ import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 fun RepositorySearchScreen(
     repositoryItems: List<RepositoryItem>,
     modifier: Modifier = Modifier,
-
+    onSearchButtonClick: (String) -> Unit,
 ) {
-    var text by remember { mutableStateOf("Hello") }
+    var text by remember { mutableStateOf("") }
 
     Scaffold(
         modifier = modifier,
@@ -45,9 +53,30 @@ fun RepositorySearchScreen(
             TextField(
                 value = text,
                 onValueChange = { text = it },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(all = 12.dp),
+                modifier = Modifier.fillMaxWidth(),
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Search,
+                        contentDescription = null,
+                        modifier = Modifier.padding(start = 8.dp),
+                    )
+                },
+                trailingIcon = {
+                    if (text.isNotEmpty()) {
+                        IconButton(
+                            onClick = { text = "" },
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Clear,
+                                contentDescription = null,
+                            )
+                        }
+                    }
+                },
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                keyboardActions = KeyboardActions(
+                    onSearch = { onSearchButtonClick(text) },
+                ),
             )
         },
     ) {
@@ -117,5 +146,6 @@ private fun RepositorySearchScreenPreview() {
                 openIssuesCount = 0,
             )
         },
+        onSearchButtonClick = {},
     )
 }
