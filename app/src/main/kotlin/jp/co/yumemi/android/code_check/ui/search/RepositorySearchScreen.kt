@@ -79,6 +79,7 @@ fun RepositorySearchScreen(
                 keyboardActions = KeyboardActions(
                     onSearch = { onSearchButtonClick(text) },
                 ),
+                maxLines = 1
             )
         },
     ) {
