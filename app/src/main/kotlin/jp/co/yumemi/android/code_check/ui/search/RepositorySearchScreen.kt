@@ -58,6 +58,7 @@ fun RepositorySearchScreen(
                 value = text,
                 onValueChange = { text = it },
                 modifier = Modifier.fillMaxWidth(),
+                placeholder = { Text(text = stringResource(id = R.string.search_input_text_hint)) },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Search,
