@@ -21,6 +21,7 @@ class RepositoryDetailScreenTest {
             RepositoryDetailScreen(
                 item = RepositoryItem.fake(),
                 onCloseButtonClick = {},
+                onShowDetailButtonClick = {},
             )
         }
 
@@ -34,6 +35,7 @@ class RepositoryDetailScreenTest {
             RepositoryDetailScreen(
                 item = RepositoryItem.fake(),
                 onCloseButtonClick = {},
+                onShowDetailButtonClick = {},
             )
         }
 

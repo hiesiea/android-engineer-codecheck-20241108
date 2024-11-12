@@ -2,9 +2,11 @@ package jp.co.yumemi.android.code_check.ui.detail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -12,6 +14,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
@@ -29,6 +32,7 @@ fun RepositoryDetailScreen(
     item: RepositoryItem,
     onCloseButtonClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onShowDetailButtonClick: () -> Unit,
 ) {
     Scaffold(
         modifier = modifier,
@@ -52,7 +56,8 @@ fun RepositoryDetailScreen(
         Column(
             modifier = Modifier
                 .padding(it)
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 8.dp)
+                .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             OwnerIcon(ownerIconUrl = item.ownerIconUrl)
@@ -66,6 +71,12 @@ fun RepositoryDetailScreen(
             Text(text = stringResource(R.string.watchers_count, item.watchersCount))
             Text(text = stringResource(R.string.forks_count, item.forksCount))
             Text(text = stringResource(R.string.open_issues_count, item.openIssuesCount))
+            Button(
+                onClick = onShowDetailButtonClick,
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+            ) {
+                Text(text = stringResource(id = R.string.show_detail_button_label))
+            }
         }
     }
 }
@@ -77,6 +88,7 @@ private fun RepositoryDetailScreenPreview() {
         RepositoryDetailScreen(
             item = RepositoryItem.fake(),
             onCloseButtonClick = {},
+            onShowDetailButtonClick = {},
         )
     }
 }

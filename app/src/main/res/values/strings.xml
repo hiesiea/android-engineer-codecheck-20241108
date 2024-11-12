@@ -6,4 +6,5 @@
     <string name="watchers_count">%d watchers</string>
     <string name="forks_count">%d forks</string>
     <string name="open_issues_count">%d open issues</string>
+    <string name="show_detail_button_label">Show Detail</string>
 </resources>
