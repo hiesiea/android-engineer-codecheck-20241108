@@ -33,7 +33,7 @@ class RepositoryDetailScreenTest {
     fun `language に何も設定されていなければ、言語自体表示されないこと`() {
         rule.setContent {
             RepositoryDetailScreen(
-                item = RepositoryItem.fake(),
+                item = RepositoryItem.fake().copy(language = null),
                 onCloseButtonClick = {},
                 onShowDetailButtonClick = {},
             )
