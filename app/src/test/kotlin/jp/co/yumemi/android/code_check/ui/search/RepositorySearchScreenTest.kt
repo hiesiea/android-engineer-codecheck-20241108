@@ -6,9 +6,11 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import jp.co.yumemi.android.code_check.data.model.DataLoadingState
+import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -75,5 +77,24 @@ class RepositorySearchScreenTest {
         }
 
         rule.onNodeWithTag("InProgressView").assertExists()
+    }
+
+    @Test
+    fun データ読み込み成功時はSuccessViewが表示されること() {
+        rule.setContent {
+            RepositorySearchScreen(
+                uiState = RepositorySearchUiState(
+                    dataLoadingState = DataLoadingState.Success,
+                    repositoryItems = listOf(RepositoryItem.fake()),
+                ),
+                onSearchButtonClick = {},
+                onItemClick = {},
+            )
+        }
+
+        rule.onNodeWithContentDescription("ownerIconUrl").assertIsDisplayed()
+        rule.onNodeWithText("dtrupenn/Tetris").assertIsDisplayed()
+        rule.onNodeWithText("Written in Assembly").assertIsDisplayed()
+        rule.onNodeWithText("1 stars").assertIsDisplayed()
     }
 }
