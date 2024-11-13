@@ -67,10 +67,10 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.android)
 
-    implementation("io.ktor:ktor-client-android:2.3.10")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.10")
-    implementation("io.ktor:ktor-client-content-negotiation:2.3.10")
-    implementation("io.ktor:ktor-client-logging:2.3.10")
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.client.logging)
 
     implementation("org.slf4j:slf4j-android:1.7.36")
 
@@ -88,7 +88,7 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlin.test)
 
-    testImplementation("io.ktor:ktor-client-mock:2.3.10")
+    testImplementation(libs.ktor.client.mock)
 
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
 
