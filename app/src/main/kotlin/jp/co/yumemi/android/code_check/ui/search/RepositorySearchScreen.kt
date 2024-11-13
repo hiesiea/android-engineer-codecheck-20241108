@@ -51,43 +51,10 @@ fun RepositorySearchScreen(
     onSearchButtonClick: (String) -> Unit,
     onItemClick: (RepositoryItem) -> Unit,
 ) {
-    var text by remember { mutableStateOf("") }
-
     Scaffold(
         modifier = modifier,
         topBar = {
-            TextField(
-                value = text,
-                onValueChange = { text = it },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .testTag("SearchTextField"),
-                placeholder = { Text(text = stringResource(id = R.string.search_input_text_hint)) },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Filled.Search,
-                        contentDescription = null,
-                        modifier = Modifier.padding(start = 8.dp),
-                    )
-                },
-                trailingIcon = {
-                    if (text.isNotEmpty()) {
-                        IconButton(
-                            onClick = { text = "" },
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.Clear,
-                                contentDescription = "ClearIconButton",
-                            )
-                        }
-                    }
-                },
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-                keyboardActions = KeyboardActions(
-                    onSearch = { onSearchButtonClick(text) },
-                ),
-                maxLines = 1,
-            )
+            SearchTextField(onSearchButtonClick = onSearchButtonClick)
         },
     ) {
         SuccessView(
@@ -96,6 +63,47 @@ fun RepositorySearchScreen(
             onItemClick = onItemClick,
         )
     }
+}
+
+@Composable
+private fun SearchTextField(
+    modifier: Modifier = Modifier,
+    onSearchButtonClick: (String) -> Unit,
+) {
+    var text by remember { mutableStateOf("") }
+
+    TextField(
+        value = text,
+        onValueChange = { text = it },
+        modifier = modifier
+            .fillMaxWidth()
+            .testTag("SearchTextField"),
+        placeholder = { Text(text = stringResource(id = R.string.search_input_text_hint)) },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Filled.Search,
+                contentDescription = null,
+                modifier = Modifier.padding(start = 8.dp),
+            )
+        },
+        trailingIcon = {
+            if (text.isNotEmpty()) {
+                IconButton(
+                    onClick = { text = "" },
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.Clear,
+                        contentDescription = "ClearIconButton",
+                    )
+                }
+            }
+        },
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+        keyboardActions = KeyboardActions(
+            onSearch = { onSearchButtonClick(text) },
+        ),
+        maxLines = 1,
+    )
 }
 
 @Composable
