@@ -7,17 +7,20 @@
 ## アプリ仕様
 
 本アプリは GitHub のリポジトリを検索するアプリです。
+修正前と修正後のアプリの動画キャプチャを以下に示します。
 
-<img src="docs/app.gif" width="320">
+Before | After
+:--: | :--:
+<img src="docs/app.gif" width="320" /> | <img src="docs/app_after.gif" width="320" />
 
 ### 環境
 
-- IDE：Android Studio Flamingo | 2022.2.1 Patch 2
-- Kotlin：1.6.21
+- IDE：Android Studio Ladybug | 2024.2.1 Patch 2
+- Kotlin：2.0.21
 - Java：17
-- Gradle：8.0
+- Gradle：8.7.2
 - minSdk：23
-- targetSdk：31
+- targetSdk：35
 
 ※ ライブラリの利用はオープンソースのものに限ります。
 ※ 環境は適宜更新してください。
@@ -25,8 +28,10 @@
 ### 動作
 
 1. 何かしらのキーワードを入力
-2. GitHub API（`search/repositories`）でリポジトリを検索し、結果一覧を概要（リポジトリ名）で表示
+2. GitHub API（`search/repositories`）でリポジトリを検索し、結果一覧を概要（リポジトリ名、オーナーアイコン、Star 数）で表示
 3. 特定の結果を選択したら、該当リポジトリの詳細（リポジトリ名、オーナーアイコン、プロジェクト言語、Star 数、Watcher 数、Fork 数、Issue 数）を表示
+4. 該当リポジトリの詳細よりもっと詳しい情報を知ることができるよう、「Show Detail」ボタンを表示
+5. 「Show Detail」ボタンをタップすると、リポジトリの We bページを表示
 
 ## 課題取り組み方法
 
