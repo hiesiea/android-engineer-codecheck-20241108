@@ -23,6 +23,9 @@ class RepositorySearchViewModel @Inject constructor(
     private val _repositoryItems = MutableStateFlow<List<RepositoryItem>>(emptyList())
     val repositoryItems: StateFlow<List<RepositoryItem>> = _repositoryItems.asStateFlow()
 
+    private val _uiState = MutableStateFlow(RepositorySearchUiState())
+    val uiState: StateFlow<RepositorySearchUiState> = _uiState.asStateFlow()
+
     /**
      * 与えられたキーワードをもとに検索処理を行う
      * @param inputText 検索するキーワード
