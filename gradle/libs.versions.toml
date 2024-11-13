@@ -13,3 +13,9 @@ navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-
 [plugins]
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-application = { id = "com.android.application" }
+kotlin-android = { id = "kotlin-android" }
+kotlin-kapt = { id = "kotlin-kapt" }
+kotlin-parcelize = { id = "kotlin-parcelize" }
+kotlinx-serialization = { id = "kotlinx-serialization" }
+navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin" }
