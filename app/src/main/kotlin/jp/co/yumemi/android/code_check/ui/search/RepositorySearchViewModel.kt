@@ -3,6 +3,7 @@ package jp.co.yumemi.android.code_check.ui.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import jp.co.yumemi.android.code_check.data.model.DataLoadingState
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import jp.co.yumemi.android.code_check.data.model.toRepositoryItem
 import jp.co.yumemi.android.code_check.data.repository.SearchRepository
@@ -35,9 +36,16 @@ class RepositorySearchViewModel @Inject constructor(
         try {
             val response = searchRepository.requestSearchRepositories(inputText = inputText)
             _repositoryItems.value = response.items.map { it.toRepositoryItem() }
+            _uiState.value = RepositorySearchUiState(
+                dataLoadingState = DataLoadingState.Success,
+                repositoryItems = response.items.map { it.toRepositoryItem() },
+            )
         } catch (throwable: Throwable) {
             Timber.e(throwable)
             _repositoryItems.value = emptyList()
+            _uiState.value = RepositorySearchUiState(
+                dataLoadingState = DataLoadingState.Failure(throwable = throwable),
+            )
         }
     }
 }
