@@ -220,6 +220,7 @@ private class DataLoadingStateProvider : PreviewParameterProvider<DataLoadingSta
             DataLoadingState.Initial,
             DataLoadingState.InProgress,
             DataLoadingState.Success,
+            DataLoadingState.Failure(throwable = UnknownHostException()),
             DataLoadingState.Failure(throwable = Throwable()),
         )
 }
