@@ -46,6 +46,7 @@ import jp.co.yumemi.android.code_check.data.model.DataLoadingState
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import jp.co.yumemi.android.code_check.ui.common.OwnerIcon
 import jp.co.yumemi.android.code_check.ui.theme.MainTheme
+import java.net.UnknownHostException
 
 @Composable
 fun RepositorySearchScreen(
@@ -78,6 +79,10 @@ fun RepositorySearchScreen(
             }
 
             is DataLoadingState.Failure -> {
+                FailureView(
+                    modifier = Modifier.padding(it),
+                    throwable = uiState.dataLoadingState.throwable,
+                )
             }
         }
     }
@@ -134,7 +139,7 @@ private fun InProgressView(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
-            .testTag("InProgressView")
+            .testTag("InProgressView"),
     ) {
         CircularProgressIndicator(
             modifier = Modifier
@@ -186,6 +191,26 @@ private fun SuccessView(
             }
             HorizontalDivider()
         }
+    }
+}
+
+@Composable
+private fun FailureView(
+    modifier: Modifier = Modifier,
+    throwable: Throwable,
+) {
+    val stringResId = when (throwable) {
+        // 例外の種類によってメッセージを切り替える
+        is UnknownHostException -> R.string.network_error_text
+        else -> R.string.other_error_text
+    }
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(all = 8.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(text = stringResource(id = stringResId))
     }
 }
 
