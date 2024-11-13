@@ -23,7 +23,7 @@ class RepositorySearchScreenTest {
     fun 入力フォームの挙動に問題ないこと() {
         rule.setContent {
             RepositorySearchScreen(
-                repositoryItems = emptyList(),
+                uiState = RepositorySearchUiState(),
                 onSearchButtonClick = {},
                 onItemClick = {},
             )

@@ -45,7 +45,6 @@ import jp.co.yumemi.android.code_check.ui.theme.MainTheme
 
 @Composable
 fun RepositorySearchScreen(
-    repositoryItems: List<RepositoryItem>,
     uiState: RepositorySearchUiState,
     modifier: Modifier = Modifier,
     onSearchButtonClick: (String) -> Unit,
@@ -177,9 +176,6 @@ private fun RepositorySearchScreenPreview(
 ) {
     MainTheme {
         RepositorySearchScreen(
-            repositoryItems = List(10) {
-                RepositoryItem.fake()
-            },
             uiState = RepositorySearchUiState(
                 dataLoadingState = dataLoadingState,
                 repositoryItems = List(10) {
