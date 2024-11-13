@@ -97,4 +97,23 @@ class RepositorySearchScreenTest {
         rule.onNodeWithText("Written in Assembly").assertIsDisplayed()
         rule.onNodeWithText("1 stars").assertIsDisplayed()
     }
+
+    @Test
+    fun `データ読み込み成功時にlanguageが設定されていなければ、言語自体表示されないこと`() {
+        rule.setContent {
+            RepositorySearchScreen(
+                uiState = RepositorySearchUiState(
+                    dataLoadingState = DataLoadingState.Success,
+                    repositoryItems = listOf(RepositoryItem.fake().copy(language = null)),
+                ),
+                onSearchButtonClick = {},
+                onItemClick = {},
+            )
+        }
+
+        rule.onNodeWithContentDescription("OwnerIcon").assertIsDisplayed()
+        rule.onNodeWithText("dtrupenn/Tetris").assertIsDisplayed()
+        rule.onNodeWithTag("language").assertDoesNotExist()
+        rule.onNodeWithText("1 stars").assertIsDisplayed()
+    }
 }
