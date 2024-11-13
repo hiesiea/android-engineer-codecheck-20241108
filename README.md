@@ -11,7 +11,7 @@
 
 Before | After
 :--: | :--:
-<img src="docs/app.gif" width="320" /> | <img src="" width="320" />
+<img src="docs/app.gif" width="320" /> | <img src="docs/app_after.gif" width="320" />
 
 ### 環境
 
