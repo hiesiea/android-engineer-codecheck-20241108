@@ -188,6 +188,7 @@ private fun SuccessView(
 private class DataLoadingStateProvider : PreviewParameterProvider<DataLoadingState> {
     override val values: Sequence<DataLoadingState>
         get() = sequenceOf(
+            DataLoadingState.Initial,
             DataLoadingState.InProgress,
             DataLoadingState.Success,
             DataLoadingState.Failure(throwable = Throwable()),
