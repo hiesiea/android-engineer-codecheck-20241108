@@ -53,10 +53,10 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
 
-    implementation("androidx.core:core-ktx:1.15.0")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
-    implementation("androidx.browser:browser:1.8.0")
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.constraintlayout)
+    implementation(libs.browser)
 
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.livedata.ktx)
@@ -72,32 +72,32 @@ dependencies {
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.client.logging)
 
-    implementation("org.slf4j:slf4j-android:1.7.36")
+    implementation(libs.slf4j.android)
 
-    implementation("io.coil-kt:coil-compose:2.7.0")
+    implementation(libs.coil.compose)
 
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation(libs.timber)
 
-    implementation("com.google.dagger:hilt-android:2.52")
-    kapt("com.google.dagger:hilt-compiler:2.52")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
 
-    testImplementation("org.robolectric:robolectric:4.13")
+    testImplementation(libs.robolectric)
 
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlin.test)
 
     testImplementation(libs.ktor.client.mock)
 
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+    testImplementation(libs.mockito.kotlin)
 
-    testImplementation("app.cash.turbine:turbine:1.2.0")
+    testImplementation(libs.turbine)
 
     testImplementation(libs.compose.ui.test.junit4)
 
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 }
 
 // Allow references to generated code
