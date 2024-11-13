@@ -36,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import jp.co.yumemi.android.code_check.R
+import jp.co.yumemi.android.code_check.data.model.DataLoadingState
 import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import jp.co.yumemi.android.code_check.ui.common.OwnerIcon
 import jp.co.yumemi.android.code_check.ui.theme.MainTheme
@@ -43,6 +44,7 @@ import jp.co.yumemi.android.code_check.ui.theme.MainTheme
 @Composable
 fun RepositorySearchScreen(
     repositoryItems: List<RepositoryItem>,
+    uiState: RepositorySearchUiState,
     modifier: Modifier = Modifier,
     onSearchButtonClick: (String) -> Unit,
     onItemClick: (RepositoryItem) -> Unit,
@@ -134,6 +136,12 @@ private fun RepositorySearchScreenPreview() {
             repositoryItems = List(10) {
                 RepositoryItem.fake()
             },
+            uiState = RepositorySearchUiState(
+                dataLoadingState = DataLoadingState.Success,
+                repositoryItems = List(10) {
+                    RepositoryItem.fake()
+                },
+            ),
             onSearchButtonClick = {},
             onItemClick = {},
         )
