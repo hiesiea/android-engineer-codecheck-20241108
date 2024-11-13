@@ -64,8 +64,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.8.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.8.3")
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 
