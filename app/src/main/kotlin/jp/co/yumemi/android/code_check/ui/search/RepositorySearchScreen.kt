@@ -57,11 +57,21 @@ fun RepositorySearchScreen(
             SearchTextField(onSearchButtonClick = onSearchButtonClick)
         },
     ) {
-        SuccessView(
-            repositoryItems = repositoryItems,
-            modifier = Modifier.padding(it),
-            onItemClick = onItemClick,
-        )
+        when (uiState.dataLoadingState) {
+            is DataLoadingState.InProgress -> {
+            }
+
+            is DataLoadingState.Success -> {
+                SuccessView(
+                    repositoryItems = uiState.repositoryItems,
+                    modifier = Modifier.padding(it),
+                    onItemClick = onItemClick,
+                )
+            }
+
+            is DataLoadingState.Failure -> {
+            }
+        }
     }
 }
 
