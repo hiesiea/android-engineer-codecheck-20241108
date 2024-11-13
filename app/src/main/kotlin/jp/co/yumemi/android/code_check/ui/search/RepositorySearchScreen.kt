@@ -90,42 +90,55 @@ fun RepositorySearchScreen(
             )
         },
     ) {
-        LazyColumn(
+        SuccessView(
+            repositoryItems = repositoryItems,
             modifier = Modifier.padding(it),
-        ) {
-            items(repositoryItems) { item ->
-                Row(
-                    modifier = Modifier
-                        .clickable { onItemClick(item) }
-                        .fillMaxWidth()
-                        .padding(all = 8.dp),
-                ) {
-                    OwnerIcon(
-                        ownerIconUrl = item.ownerIconUrl,
-                        modifier = Modifier.size(80.dp),
+            onItemClick = onItemClick,
+        )
+    }
+}
+
+@Composable
+private fun SuccessView(
+    repositoryItems: List<RepositoryItem>,
+    modifier: Modifier = Modifier,
+    onItemClick: (RepositoryItem) -> Unit,
+) {
+    LazyColumn(
+        modifier = modifier,
+    ) {
+        items(repositoryItems) { item ->
+            Row(
+                modifier = Modifier
+                    .clickable { onItemClick(item) }
+                    .fillMaxWidth()
+                    .padding(all = 8.dp),
+            ) {
+                OwnerIcon(
+                    ownerIconUrl = item.ownerIconUrl,
+                    modifier = Modifier.size(80.dp),
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Column {
+                    Text(
+                        text = item.name,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 2,
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Column {
+                    item.language?.let { language ->
                         Text(
-                            text = item.name,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            overflow = TextOverflow.Ellipsis,
-                            maxLines = 2,
+                            text = stringResource(R.string.written_language, language),
+                            modifier = Modifier
+                                .padding(vertical = 4.dp)
+                                .testTag("language"),
                         )
-                        item.language?.let { language ->
-                            Text(
-                                text = stringResource(R.string.written_language, language),
-                                modifier = Modifier
-                                    .padding(vertical = 4.dp)
-                                    .testTag("language"),
-                            )
-                        }
-                        Text(text = stringResource(R.string.stars_count, item.stargazersCount))
                     }
+                    Text(text = stringResource(R.string.stars_count, item.stargazersCount))
                 }
-                HorizontalDivider()
             }
+            HorizontalDivider()
         }
     }
 }
