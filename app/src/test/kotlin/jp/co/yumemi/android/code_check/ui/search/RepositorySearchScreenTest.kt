@@ -92,7 +92,7 @@ class RepositorySearchScreenTest {
             )
         }
 
-        rule.onNodeWithContentDescription("ownerIconUrl").assertIsDisplayed()
+        rule.onNodeWithContentDescription("OwnerIcon").assertIsDisplayed()
         rule.onNodeWithText("dtrupenn/Tetris").assertIsDisplayed()
         rule.onNodeWithText("Written in Assembly").assertIsDisplayed()
         rule.onNodeWithText("1 stars").assertIsDisplayed()
