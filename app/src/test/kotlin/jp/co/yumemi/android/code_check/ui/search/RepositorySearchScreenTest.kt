@@ -61,4 +61,19 @@ class RepositorySearchScreenTest {
 
         rule.onNodeWithTag("InitialView").assertExists()
     }
+
+    @Test
+    fun データ読み込み時はInProgressViewが表示されること() {
+        rule.setContent {
+            RepositorySearchScreen(
+                uiState = RepositorySearchUiState(
+                    dataLoadingState = DataLoadingState.InProgress,
+                ),
+                onSearchButtonClick = {},
+                onItemClick = {},
+            )
+        }
+
+        rule.onNodeWithTag("InProgressView").assertExists()
+    }
 }

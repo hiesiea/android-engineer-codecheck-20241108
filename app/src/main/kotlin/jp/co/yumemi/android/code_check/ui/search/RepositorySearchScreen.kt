@@ -131,7 +131,11 @@ private fun InitialView(modifier: Modifier = Modifier) {
 
 @Composable
 private fun InProgressView(modifier: Modifier = Modifier) {
-    Box(modifier = modifier.fillMaxSize()) {
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .testTag("InProgressView")
+    ) {
         CircularProgressIndicator(
             modifier = Modifier
                 .size(64.dp)
