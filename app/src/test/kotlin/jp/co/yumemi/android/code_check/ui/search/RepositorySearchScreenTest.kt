@@ -132,4 +132,19 @@ class RepositorySearchScreenTest {
 
         rule.onNodeWithText("検索に失敗しました。ネットワークに接続されているか確認し、しばらく待ってから再度お試しください。").assertIsDisplayed()
     }
+
+    @Test
+    fun `データ読み込み失敗時にUnknownHostException以外の例外が発生したら、障害が発生している旨が表示されること`() {
+        rule.setContent {
+            RepositorySearchScreen(
+                uiState = RepositorySearchUiState(
+                    dataLoadingState = DataLoadingState.Failure(throwable = Throwable()),
+                ),
+                onSearchButtonClick = {},
+                onItemClick = {},
+            )
+        }
+
+        rule.onNodeWithText("検索に失敗しました。障害が発生している可能性があるため、開発者にお問い合わせください。").assertIsDisplayed()
+    }
 }
