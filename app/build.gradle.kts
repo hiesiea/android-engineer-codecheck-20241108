@@ -55,9 +55,7 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.browser:browser:1.8.0")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
@@ -67,7 +65,7 @@ dependencies {
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation(libs.kotlinx.coroutines.android)
 
     implementation("io.ktor:ktor-client-android:2.3.10")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.10")
@@ -87,8 +85,8 @@ dependencies {
 
     testImplementation("org.robolectric:robolectric:4.13")
 
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.kotlin.test)
 
     testImplementation("io.ktor:ktor-client-mock:2.3.10")
 
