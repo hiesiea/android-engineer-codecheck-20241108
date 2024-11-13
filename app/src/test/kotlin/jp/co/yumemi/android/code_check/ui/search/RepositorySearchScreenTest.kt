@@ -8,6 +8,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
+import jp.co.yumemi.android.code_check.data.model.DataLoadingState
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -44,5 +45,20 @@ class RepositorySearchScreenTest {
         clearIconButton.performClick()
         clearIconButton.assertDoesNotExist()
         searchTextField.assert(hasText(""))
+    }
+
+    @Test
+    fun 初回表示時はInitialViewが表示されること() {
+        rule.setContent {
+            RepositorySearchScreen(
+                uiState = RepositorySearchUiState(
+                    dataLoadingState = DataLoadingState.Initial,
+                ),
+                onSearchButtonClick = {},
+                onItemClick = {},
+            )
+        }
+
+        rule.onNodeWithTag("InitialView").assertExists()
     }
 }

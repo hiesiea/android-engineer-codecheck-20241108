@@ -126,7 +126,7 @@ private fun SearchTextField(
 
 @Composable
 private fun InitialView(modifier: Modifier = Modifier) {
-    Box(modifier = modifier)
+    Box(modifier = modifier.testTag("InitialView"))
 }
 
 @Composable
