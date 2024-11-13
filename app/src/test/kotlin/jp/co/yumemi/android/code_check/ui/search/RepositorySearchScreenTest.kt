@@ -14,6 +14,7 @@ import jp.co.yumemi.android.code_check.data.model.RepositoryItem
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import java.net.UnknownHostException
 import kotlin.test.Test
 
 @Suppress("NonAsciiCharacters", "TestFunctionName")
@@ -115,5 +116,20 @@ class RepositorySearchScreenTest {
         rule.onNodeWithText("dtrupenn/Tetris").assertIsDisplayed()
         rule.onNodeWithTag("language").assertDoesNotExist()
         rule.onNodeWithText("1 stars").assertIsDisplayed()
+    }
+
+    @Test
+    fun `データ読み込み失敗時にUnknownHostExceptionが発生したら、ネットワークエラーの旨が表示されること`() {
+        rule.setContent {
+            RepositorySearchScreen(
+                uiState = RepositorySearchUiState(
+                    dataLoadingState = DataLoadingState.Failure(throwable = UnknownHostException()),
+                ),
+                onSearchButtonClick = {},
+                onItemClick = {},
+            )
+        }
+
+        rule.onNodeWithText("検索に失敗しました。ネットワークに接続されているか確認し、しばらく待ってから再度お試しください。").assertIsDisplayed()
     }
 }
