@@ -33,6 +33,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import jp.co.yumemi.android.code_check.R
@@ -128,16 +130,27 @@ fun RepositorySearchScreen(
     }
 }
 
+private class DataLoadingStateProvider : PreviewParameterProvider<DataLoadingState> {
+    override val values: Sequence<DataLoadingState>
+        get() = sequenceOf(
+            DataLoadingState.InProgress,
+            DataLoadingState.Success,
+            DataLoadingState.Failure(throwable = Throwable()),
+        )
+}
+
 @Preview
 @Composable
-private fun RepositorySearchScreenPreview() {
+private fun RepositorySearchScreenPreview(
+    @PreviewParameter(DataLoadingStateProvider::class) dataLoadingState: DataLoadingState,
+) {
     MainTheme {
         RepositorySearchScreen(
             repositoryItems = List(10) {
                 RepositoryItem.fake()
             },
             uiState = RepositorySearchUiState(
-                dataLoadingState = DataLoadingState.Success,
+                dataLoadingState = dataLoadingState,
                 repositoryItems = List(10) {
                     RepositoryItem.fake()
                 },
