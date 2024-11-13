@@ -61,6 +61,10 @@ fun RepositorySearchScreen(
         },
     ) {
         when (uiState.dataLoadingState) {
+            is DataLoadingState.Initial -> {
+                InitialView(modifier = Modifier.padding(it))
+            }
+
             is DataLoadingState.InProgress -> {
                 InProgressView(modifier = Modifier.padding(it))
             }
@@ -121,12 +125,17 @@ private fun SearchTextField(
 }
 
 @Composable
+private fun InitialView(modifier: Modifier = Modifier) {
+    Box(modifier = modifier)
+}
+
+@Composable
 private fun InProgressView(modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxSize()) {
         CircularProgressIndicator(
             modifier = Modifier
                 .size(64.dp)
-                .align(Alignment.Center)
+                .align(Alignment.Center),
         )
     }
 }

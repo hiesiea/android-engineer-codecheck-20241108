@@ -30,6 +30,7 @@ class RepositorySearchViewModel @Inject constructor(
      */
     fun searchRepositories(inputText: String) = viewModelScope.launch {
         try {
+            _uiState.value = RepositorySearchUiState(dataLoadingState = DataLoadingState.InProgress)
             val response = searchRepository.requestSearchRepositories(inputText = inputText)
             _uiState.value = RepositorySearchUiState(
                 dataLoadingState = DataLoadingState.Success,
