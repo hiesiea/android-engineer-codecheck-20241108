@@ -27,7 +27,7 @@ fun OwnerIcon(
         // Preview 時
         Image(
             painter = painterResource(R.drawable.jetbrains),
-            contentDescription = "ownerIconUrl",
+            contentDescription = "OwnerIcon",
             modifier = modifier,
         )
     } else {
@@ -37,7 +37,7 @@ fun OwnerIcon(
         } else {
             AsyncImage(
                 model = ownerIconUrl,
-                contentDescription = "ownerIconUrl",
+                contentDescription = "OwnerIcon",
                 modifier = modifier,
                 onError = {
                     isError = true

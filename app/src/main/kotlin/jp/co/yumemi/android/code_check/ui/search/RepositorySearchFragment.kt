@@ -28,10 +28,10 @@ class RepositorySearchFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MainTheme {
-                    val repositoryItems by viewModel.repositoryItems.collectAsStateWithLifecycle()
+                    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
                     RepositorySearchScreen(
-                        repositoryItems = repositoryItems,
+                        uiState = uiState,
                         onSearchButtonClick = { viewModel.searchRepositories(it) },
                         onItemClick = { navigateRepositoryDetail(it) },
                     )
