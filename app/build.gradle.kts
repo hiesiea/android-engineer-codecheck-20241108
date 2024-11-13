@@ -58,9 +58,9 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
     implementation("androidx.browser:browser:1.8.0")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
 
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
