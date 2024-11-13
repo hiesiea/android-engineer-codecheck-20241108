@@ -60,7 +60,10 @@ fun RepositoryDetailScreen(
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            OwnerIcon(ownerIconUrl = item.ownerIconUrl)
+            OwnerIcon(
+                ownerIconUrl = item.ownerIconUrl,
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+            )
             item.language?.let { language ->
                 Text(
                     text = stringResource(R.string.written_language, language),
