@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -31,6 +32,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.PointerEventPass
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -46,6 +49,7 @@ import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
 import jp.co.yumemi.android.codecheck.ui.common.OwnerIcon
 import jp.co.yumemi.android.codecheck.ui.theme.MainTheme
+import kotlinx.coroutines.coroutineScope
 import java.net.UnknownHostException
 
 @Composable
@@ -56,7 +60,7 @@ fun RepositorySearchScreen(
     onItemClick: (RepositoryItem) -> Unit,
 ) {
     Scaffold(
-        modifier = modifier,
+        modifier = modifier.systemBarsPadding(),
         topBar = {
             SearchTextField(onSearchButtonClick = onSearchButtonClick)
         },
@@ -156,7 +160,7 @@ private fun SuccessView(
     onItemClick: (RepositoryItem) -> Unit,
 ) {
     LazyColumn(
-        modifier = modifier,
+        modifier = modifier.disableSplitMotionEvents(),
     ) {
         items(repositoryItems) { item ->
             Row(
@@ -213,6 +217,30 @@ private fun FailureView(
         Text(text = stringResource(id = stringResId))
     }
 }
+
+/**
+ * 複数の項目が同時にタップされた場合に、複数の処理が走らないようにする。
+ * @see <a href="https://stackoverflow.com/a/72816456/10867055">android - How to disable simultaneous clicks on multiple items in Jetpack Compose List / Column / Row (out of the box debounce?) - Stack Overflow</a>
+ */
+private fun Modifier.disableSplitMotionEvents() = then(
+    pointerInput(Unit) {
+        coroutineScope {
+            var currentId: Long = -1L
+            awaitPointerEventScope {
+                while (true) {
+                    awaitPointerEvent(PointerEventPass.Initial).changes.forEach { pointerInfo ->
+                        when {
+                            pointerInfo.pressed && currentId == -1L -> currentId = pointerInfo.id.value
+                            pointerInfo.pressed.not() && currentId == pointerInfo.id.value -> currentId = -1
+                            pointerInfo.id.value != currentId && currentId != -1L -> pointerInfo.consume()
+                            else -> Unit
+                        }
+                    }
+                }
+            }
+        }
+    },
+)
 
 private class DataLoadingStateProvider : PreviewParameterProvider<DataLoadingState> {
     override val values: Sequence<DataLoadingState>
