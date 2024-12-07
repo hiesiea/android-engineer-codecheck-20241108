@@ -21,6 +21,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // デバッグ用の署名を使用してリリースビルドしたい場合、以下をコメントアウトする
+        // signingConfig = signingConfigs["debug"]
     }
 
     buildTypes {
