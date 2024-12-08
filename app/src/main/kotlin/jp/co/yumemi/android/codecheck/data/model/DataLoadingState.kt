@@ -14,5 +14,5 @@ sealed class DataLoadingState {
     data object Success : DataLoadingState()
 
     /** 読み込み失敗 */
-    data class Failure(val throwable: Throwable) : DataLoadingState()
+    data class Failure(val errorType: ErrorType) : DataLoadingState()
 }

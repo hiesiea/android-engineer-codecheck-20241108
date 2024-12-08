@@ -10,11 +10,11 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
+import jp.co.yumemi.android.codecheck.data.model.ErrorType
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import java.net.UnknownHostException
 import kotlin.test.Test
 
 @Suppress("NonAsciiCharacters", "TestFunctionName")
@@ -119,11 +119,11 @@ class RepositorySearchScreenTest {
     }
 
     @Test
-    fun `データ読み込み失敗時にUnknownHostExceptionが発生したら、ネットワークエラーの旨が表示されること`() {
+    fun `データ読み込み失敗時に NETWORK_ERROR だったら、ネットワークエラーの旨が表示されること`() {
         rule.setContent {
             RepositorySearchScreen(
                 uiState = RepositorySearchUiState(
-                    dataLoadingState = DataLoadingState.Failure(throwable = UnknownHostException()),
+                    dataLoadingState = DataLoadingState.Failure(errorType = ErrorType.NETWORK_ERROR),
                 ),
                 onSearchButtonClick = {},
                 onItemClick = {},
@@ -134,11 +134,11 @@ class RepositorySearchScreenTest {
     }
 
     @Test
-    fun `データ読み込み失敗時にUnknownHostException以外の例外が発生したら、障害が発生している旨が表示されること`() {
+    fun `データ読み込み失敗時に OTHER_ERROR だったら、障害が発生している旨が表示されること`() {
         rule.setContent {
             RepositorySearchScreen(
                 uiState = RepositorySearchUiState(
-                    dataLoadingState = DataLoadingState.Failure(throwable = Throwable()),
+                    dataLoadingState = DataLoadingState.Failure(errorType = ErrorType.OTHER_ERROR),
                 ),
                 onSearchButtonClick = {},
                 onItemClick = {},

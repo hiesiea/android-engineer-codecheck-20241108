@@ -2,6 +2,7 @@ package jp.co.yumemi.android.codecheck.ui.search
 
 import app.cash.turbine.test
 import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
+import jp.co.yumemi.android.codecheck.data.model.ErrorType
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
 import jp.co.yumemi.android.codecheck.data.model.SearchRepositoriesResponse
 import jp.co.yumemi.android.codecheck.data.model.SearchRepositoryResponse
@@ -53,7 +54,7 @@ class RepositorySearchViewModelTest {
 
         viewModel.uiState.test {
             val expected = RepositorySearchUiState(
-                dataLoadingState = DataLoadingState.Failure(throwable = exception),
+                dataLoadingState = DataLoadingState.Failure(errorType = ErrorType.from(throwable = exception)),
                 repositoryItems = emptyList(),
             )
             assertEquals(expected, awaitItem())

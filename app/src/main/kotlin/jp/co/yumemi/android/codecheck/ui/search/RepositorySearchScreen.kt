@@ -46,11 +46,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import jp.co.yumemi.android.codecheck.R
 import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
+import jp.co.yumemi.android.codecheck.data.model.ErrorType
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
 import jp.co.yumemi.android.codecheck.ui.common.OwnerIcon
 import jp.co.yumemi.android.codecheck.ui.theme.MainTheme
 import kotlinx.coroutines.coroutineScope
-import java.net.UnknownHostException
 
 @Composable
 fun RepositorySearchScreen(
@@ -83,7 +83,7 @@ fun RepositorySearchScreen(
                 }
 
                 is DataLoadingState.Failure -> {
-                    FailureView(throwable = uiState.dataLoadingState.throwable)
+                    FailureView(errorType = uiState.dataLoadingState.errorType)
                 }
             }
         }
@@ -199,11 +199,11 @@ private fun SuccessView(
 @Composable
 private fun FailureView(
     modifier: Modifier = Modifier,
-    throwable: Throwable,
+    errorType: ErrorType,
 ) {
-    val stringResId = when (throwable) {
+    val stringResId = when (errorType) {
         // 例外の種類によってメッセージを切り替える
-        is UnknownHostException -> R.string.network_error_text
+        ErrorType.NETWORK_ERROR -> R.string.network_error_text
         else -> R.string.other_error_text
     }
     Box(
@@ -246,8 +246,8 @@ private class DataLoadingStateProvider : PreviewParameterProvider<DataLoadingSta
             DataLoadingState.Initial,
             DataLoadingState.InProgress,
             DataLoadingState.Success,
-            DataLoadingState.Failure(throwable = UnknownHostException()),
-            DataLoadingState.Failure(throwable = Throwable()),
+            DataLoadingState.Failure(errorType = ErrorType.NETWORK_ERROR),
+            DataLoadingState.Failure(errorType = ErrorType.OTHER_ERROR),
         )
 }
 
