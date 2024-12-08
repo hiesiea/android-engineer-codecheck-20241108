@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
@@ -62,7 +64,8 @@ fun RepositoryDetailScreen(
             modifier = Modifier
                 .padding(it)
                 .padding(horizontal = 8.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .verticalScroll(state = rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             OwnerIcon(

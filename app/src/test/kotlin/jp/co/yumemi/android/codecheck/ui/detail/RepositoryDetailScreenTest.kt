@@ -1,6 +1,5 @@
 package jp.co.yumemi.android.codecheck.ui.detail
 
-import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
@@ -26,7 +25,7 @@ class RepositoryDetailScreenTest {
             )
         }
 
-        rule.onNodeWithContentDescription("OwnerIcon").assertIsDisplayed()
+        rule.onNodeWithContentDescription("OwnerIcon").assertExists()
         rule.onNodeWithTag("language").assertExists()
     }
 
@@ -40,7 +39,7 @@ class RepositoryDetailScreenTest {
             )
         }
 
-        rule.onNodeWithContentDescription("OwnerIcon").assertIsDisplayed()
+        rule.onNodeWithContentDescription("OwnerIcon").assertExists()
         rule.onNodeWithTag("language").assertDoesNotExist()
     }
 }

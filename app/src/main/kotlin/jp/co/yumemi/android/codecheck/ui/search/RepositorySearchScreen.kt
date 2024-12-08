@@ -64,29 +64,27 @@ fun RepositorySearchScreen(
         topBar = {
             SearchTextField(onSearchButtonClick = onSearchButtonClick)
         },
-    ) {
-        when (uiState.dataLoadingState) {
-            is DataLoadingState.Initial -> {
-                InitialView(modifier = Modifier.padding(it))
-            }
+    ) { paddingValues ->
+        Box(modifier = Modifier.padding(paddingValues)) {
+            when (uiState.dataLoadingState) {
+                is DataLoadingState.Initial -> {
+                    InitialView()
+                }
 
-            is DataLoadingState.InProgress -> {
-                InProgressView(modifier = Modifier.padding(it))
-            }
+                is DataLoadingState.InProgress -> {
+                    InProgressView()
+                }
 
-            is DataLoadingState.Success -> {
-                SuccessView(
-                    repositoryItems = uiState.repositoryItems,
-                    modifier = Modifier.padding(it),
-                    onItemClick = onItemClick,
-                )
-            }
+                is DataLoadingState.Success -> {
+                    SuccessView(
+                        repositoryItems = uiState.repositoryItems,
+                        onItemClick = onItemClick,
+                    )
+                }
 
-            is DataLoadingState.Failure -> {
-                FailureView(
-                    modifier = Modifier.padding(it),
-                    throwable = uiState.dataLoadingState.throwable,
-                )
+                is DataLoadingState.Failure -> {
+                    FailureView(throwable = uiState.dataLoadingState.throwable)
+                }
             }
         }
     }
