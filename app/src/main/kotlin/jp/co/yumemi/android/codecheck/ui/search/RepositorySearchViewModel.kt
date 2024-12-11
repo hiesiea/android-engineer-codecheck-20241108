@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
 import jp.co.yumemi.android.codecheck.data.model.ErrorType
-import jp.co.yumemi.android.codecheck.data.model.toRepositoryItem
 import jp.co.yumemi.android.codecheck.data.repository.SearchRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,10 +31,10 @@ class RepositorySearchViewModel @Inject constructor(
     fun searchRepositories(inputText: String) = viewModelScope.launch {
         try {
             _uiState.value = RepositorySearchUiState(dataLoadingState = DataLoadingState.InProgress)
-            val response = searchRepository.requestSearchRepositories(inputText = inputText)
+            val repositoryItems = searchRepository.requestSearchRepositories(inputText = inputText)
             _uiState.value = RepositorySearchUiState(
                 dataLoadingState = DataLoadingState.Success,
-                repositoryItems = response.items.map { it.toRepositoryItem() },
+                repositoryItems = repositoryItems,
             )
         } catch (throwable: Throwable) {
             Timber.e(throwable)
