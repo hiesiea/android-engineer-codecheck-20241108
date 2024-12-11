@@ -5,14 +5,14 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class RepositoryItem(
-    val name: String,
-    val ownerIconUrl: String,
-    val htmlUrl: String,
-    val language: String?,
-    val stargazersCount: Long,
-    val watchersCount: Long,
-    val forksCount: Long,
-    val openIssuesCount: Long,
+    val name: String = "",
+    val ownerIconUrl: String = "",
+    val htmlUrl: String = "",
+    val language: String? = null,
+    val stargazersCount: Long = 0,
+    val watchersCount: Long = 0,
+    val forksCount: Long = 0,
+    val openIssuesCount: Long = 0,
 ) : Parcelable {
     companion object {
         fun fake(): RepositoryItem {
