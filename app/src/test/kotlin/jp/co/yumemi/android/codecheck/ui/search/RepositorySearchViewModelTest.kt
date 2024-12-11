@@ -2,10 +2,8 @@ package jp.co.yumemi.android.codecheck.ui.search
 
 import app.cash.turbine.test
 import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
+import jp.co.yumemi.android.codecheck.data.model.ErrorType
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
-import jp.co.yumemi.android.codecheck.data.model.SearchRepositoriesResponse
-import jp.co.yumemi.android.codecheck.data.model.SearchRepositoryResponse
-import jp.co.yumemi.android.codecheck.data.model.fake
 import jp.co.yumemi.android.codecheck.data.repository.SearchRepository
 import kotlinx.coroutines.test.runTest
 import org.junit.runner.RunWith
@@ -24,21 +22,27 @@ class RepositorySearchViewModelTest {
 
     @Test
     fun `APIから正常なデータが返ってきた場合、uiState にそのデータが返ってくること`() = runTest {
-        val searchRepositoriesResponse = SearchRepositoriesResponse(
-            items = listOf(
-                SearchRepositoryResponse.fake(),
+        val inputText = "テスト"
+        val repositoryItems = listOf(
+            RepositoryItem(
+                name = "dtrupenn/Tetris",
+                ownerIconUrl = "https://secure.gravatar.com/avatar/e7956084e75f239de85d3a31bc172ace?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+                htmlUrl = "https://github.com/dtrupenn/Tetris",
+                language = "Assembly",
+                stargazersCount = 1,
+                watchersCount = 1,
+                forksCount = 0,
+                openIssuesCount = 0,
             ),
         )
-        whenever(searchRepository.requestSearchRepositories(any())).thenReturn(searchRepositoriesResponse)
+        whenever(searchRepository.requestSearchRepositories(inputText)).thenReturn(repositoryItems)
 
-        viewModel.searchRepositories(inputText = "テスト")
+        viewModel.searchRepositories(inputText = inputText)
 
         viewModel.uiState.test {
             val expected = RepositorySearchUiState(
                 dataLoadingState = DataLoadingState.Success,
-                repositoryItems = listOf(
-                    RepositoryItem.fake(),
-                ),
+                repositoryItems = repositoryItems,
             )
             assertEquals(expected, awaitItem())
         }
@@ -53,7 +57,7 @@ class RepositorySearchViewModelTest {
 
         viewModel.uiState.test {
             val expected = RepositorySearchUiState(
-                dataLoadingState = DataLoadingState.Failure(throwable = exception),
+                dataLoadingState = DataLoadingState.Failure(errorType = ErrorType.from(throwable = exception)),
                 repositoryItems = emptyList(),
             )
             assertEquals(expected, awaitItem())
