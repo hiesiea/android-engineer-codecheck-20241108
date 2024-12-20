@@ -47,6 +47,9 @@ android {
     testOptions {
         unitTests.isIncludeAndroidResources = true
     }
+    lint {
+        lintConfig = file("lint.xml")
+    }
 }
 
 dependencies {
