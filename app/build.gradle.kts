@@ -104,3 +104,9 @@ tasks.withType<AbstractTestTask> {
         enabled = false
     }
 }
+
+detekt {
+    parallel = true
+    config.setFrom("$rootDir/config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
+}
