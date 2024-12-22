@@ -21,6 +21,8 @@ jobs:
         run: chmod +x gradlew
       - name: Android Lint
         run: ./gradlew lint
+      - name: detekt
+        run: ./gradlew detekt
       - name: Build with Gradle
         run: ./gradlew assembleDebug
       - name: Test with Gradle
