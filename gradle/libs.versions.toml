@@ -20,6 +20,7 @@ robolectric = "4.13"
 slf4jAndroid = "1.7.36"
 timber = "5.0.1"
 turbine = "1.2.0"
+detekt = "1.23.7"
 
 [libraries]
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -70,3 +71,4 @@ kotlin-kapt = { id = "kotlin-kapt" }
 kotlin-parcelize = { id = "kotlin-parcelize" }
 kotlinx-serialization = { id = "kotlinx-serialization" }
 navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

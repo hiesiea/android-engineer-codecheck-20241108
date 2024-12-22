@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.navigation.safeargs.kotlin)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -45,6 +46,9 @@ android {
     }
     testOptions {
         unitTests.isIncludeAndroidResources = true
+    }
+    lint {
+        lintConfig = file("lint.xml")
     }
 }
 
@@ -99,4 +103,10 @@ tasks.withType<AbstractTestTask> {
     if (name == "testReleaseUnitTest") {
         enabled = false
     }
+}
+
+detekt {
+    parallel = true
+    config.setFrom("$rootDir/config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
 }
