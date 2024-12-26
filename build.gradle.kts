@@ -5,15 +5,15 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(libs.android.gradle.plugin)
-        classpath(libs.kotlin.gradle.plugin)
         classpath(libs.navigation.safe.args.gradle.plugin)
-        classpath(libs.kotlin.serialization)
     }
 }
 
 plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.hilt) apply false
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.detekt) apply false
 }

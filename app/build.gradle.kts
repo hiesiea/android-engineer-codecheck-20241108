@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.navigation.safeargs.kotlin)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
