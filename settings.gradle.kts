@@ -18,5 +18,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "Android Engineer CodeCheck"
 include(":app")
+include(":core:data")
