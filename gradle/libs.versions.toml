@@ -21,6 +21,7 @@ slf4jAndroid = "1.7.36"
 timber = "5.0.1"
 turbine = "1.2.0"
 detekt = "1.23.7"
+ksp = "2.1.0-1.0.29"
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -61,6 +62,8 @@ turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 [plugins]
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

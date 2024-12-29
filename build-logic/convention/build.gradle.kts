@@ -21,6 +21,8 @@ kotlin {
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
 }
 
 tasks {
@@ -32,6 +34,9 @@ tasks {
 
 gradlePlugin {
     plugins {
-        // TODO ConventionPlugin をここに定義していく予定
+        register("androidApplication") {
+            id = "codecheck.android.application"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
     }
 }
