@@ -38,5 +38,9 @@ gradlePlugin {
             id = "codecheck.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("androidLibrary") {
+            id = "codecheck.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
     }
 }
