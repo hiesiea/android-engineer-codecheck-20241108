@@ -19,6 +19,10 @@ kotlin {
     }
 }
 
+dependencies {
+    compileOnly(libs.android.gradlePlugin)
+}
+
 tasks {
     validatePlugins {
         enableStricterValidation = true
