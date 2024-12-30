@@ -78,6 +78,7 @@ kotlin-parcelize = { id = "kotlin-parcelize" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 [bundles]
 plugins = [
