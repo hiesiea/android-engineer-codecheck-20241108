@@ -38,6 +38,10 @@ gradlePlugin {
             id = "codecheck.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("androidApplicationCompose") {
+            id = "codecheck.android.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
         register("androidLibrary") {
             id = "codecheck.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
