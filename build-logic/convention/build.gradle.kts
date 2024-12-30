@@ -52,5 +52,9 @@ gradlePlugin {
             id = "codecheck.detekt"
             implementationClass = "DetektPlugin"
         }
+        register("androidHilt") {
+            id = "codecheck.android.hilt"
+            implementationClass = "AndroidHiltPlugin"
+        }
     }
 }
