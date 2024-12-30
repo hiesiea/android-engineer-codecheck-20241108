@@ -23,6 +23,7 @@ dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.detekt.gradlePlugin)
 }
 
 tasks {
@@ -49,6 +50,10 @@ gradlePlugin {
         register("androidLibraryCompose") {
             id = "codecheck.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+        register("detekt") {
+            id = "codecheck.detekt"
+            implementationClass = "DetektPlugin"
         }
     }
 }
