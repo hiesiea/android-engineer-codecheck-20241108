@@ -59,7 +59,6 @@ dependencies {
     implementation(libs.ktor.client.logging)
     implementation(libs.slf4j.android)
     implementation(libs.coil.compose)
-    implementation(libs.timber)
 
     debugImplementation(libs.compose.ui.test.manifest)
 
