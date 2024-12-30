@@ -77,3 +77,11 @@ kotlin-parcelize = { id = "kotlin-parcelize" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+
+[bundles]
+plugins = [
+    "android-gradlePlugin",
+    "kotlin-gradlePlugin",
+    "ksp-gradlePlugin",
+    "detekt-gradlePlugin",
+]
