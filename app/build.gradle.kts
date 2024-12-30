@@ -1,22 +1,19 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    id("codecheck.android.application")
+    id("codecheck.android.application.compose")
+    id("codecheck.detekt")
+    id("codecheck.android.hilt")
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.navigation.safeargs.kotlin)
-    alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.detekt)
 }
 
 android {
     namespace = "jp.co.yumemi.android.codecheck"
-    compileSdk = 35
 
     defaultConfig {
         applicationId = "jp.co.yumemi.android.codecheck"
-        minSdk = 23
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -33,19 +30,11 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
     kotlinOptions {
         jvmTarget = "17"
     }
     buildFeatures {
         buildConfig = true
-        compose = true
-    }
-    testOptions {
-        unitTests.isIncludeAndroidResources = true
     }
     lint {
         lintConfig = file("lint.xml")
@@ -53,9 +42,7 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.compose.bom))
     implementation(libs.compose.material3)
-    implementation(libs.compose.ui.tooling.preview)
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
@@ -73,12 +60,8 @@ dependencies {
     implementation(libs.slf4j.android)
     implementation(libs.coil.compose)
     implementation(libs.timber)
-    implementation(libs.hilt.android)
 
-    debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
-
-    kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)
@@ -93,20 +76,9 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 }
 
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
-}
-
 tasks.withType<AbstractTestTask> {
     // Disable unit tests for release build type (Robolectric limitations)
     if (name == "testReleaseUnitTest") {
         enabled = false
     }
-}
-
-detekt {
-    parallel = true
-    config.setFrom("$rootDir/config/detekt/detekt.yml")
-    buildUponDefaultConfig = true
 }
