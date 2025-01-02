@@ -32,7 +32,6 @@ dependencies {
     implementation(project(":core:ui"))
 
     implementation(libs.compose.material3)
-    implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.kotlinx.coroutines.android)
 
     debugImplementation(libs.compose.ui.test.manifest)
