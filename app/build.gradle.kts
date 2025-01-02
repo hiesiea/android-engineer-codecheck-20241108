@@ -56,7 +56,6 @@ dependencies {
     implementation(libs.navigation.ui.ktx)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.slf4j.android)
-    implementation(libs.coil.compose)
 
     debugImplementation(libs.compose.ui.test.manifest)
 
