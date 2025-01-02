@@ -1,7 +1,7 @@
 /*
  * Copyright © 2021 YUMEMI Inc. All rights reserved.
  */
-package jp.co.yumemi.android.codecheck.ui.detail
+package jp.co.yumemi.android.codecheck
 
 import android.net.Uri
 import android.os.Bundle

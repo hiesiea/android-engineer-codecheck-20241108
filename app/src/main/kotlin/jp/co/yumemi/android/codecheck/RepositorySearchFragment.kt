@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui.search
+package jp.co.yumemi.android.codecheck
 
 import android.os.Bundle
 import android.view.LayoutInflater
