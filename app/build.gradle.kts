@@ -67,9 +67,6 @@ dependencies {
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.turbine)
     testImplementation(libs.compose.ui.test.junit4)
-
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
 }
 
 tasks.withType<AbstractTestTask> {
