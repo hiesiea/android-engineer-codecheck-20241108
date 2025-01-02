@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui.detail
+package jp.co.yumemi.android.codecheck.detail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,7 +23,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import jp.co.yumemi.android.codecheck.R
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
 import jp.co.yumemi.android.codecheck.designsystem.MainTheme
 import jp.co.yumemi.android.codecheck.ui.OwnerIcon
