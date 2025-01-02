@@ -27,4 +27,26 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:data"))
+    implementation(project(":core:designsystem"))
+    implementation(project(":core:ui"))
+
+    implementation(libs.compose.material3)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+
+    debugImplementation(libs.compose.ui.test.manifest)
+
+    testImplementation(libs.robolectric)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.turbine)
+    testImplementation(libs.compose.ui.test.junit4)
+}
+
+tasks.withType<AbstractTestTask> {
+    // Disable unit tests for release build type (Robolectric limitations)
+    if (name == "testReleaseUnitTest") {
+        enabled = false
+    }
 }
