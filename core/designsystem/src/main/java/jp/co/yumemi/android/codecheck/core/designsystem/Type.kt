@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.designsystem
+package jp.co.yumemi.android.codecheck.core.designsystem
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
