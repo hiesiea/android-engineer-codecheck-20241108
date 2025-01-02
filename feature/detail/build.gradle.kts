@@ -38,3 +38,10 @@ dependencies {
     testImplementation(libs.robolectric)
     testImplementation(libs.compose.ui.test.junit4)
 }
+
+tasks.withType<AbstractTestTask> {
+    // Disable unit tests for release build type (Robolectric limitations)
+    if (name == "testReleaseUnitTest") {
+        enabled = false
+    }
+}
