@@ -48,8 +48,8 @@ import jp.co.yumemi.android.codecheck.R
 import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
 import jp.co.yumemi.android.codecheck.data.model.ErrorType
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
+import jp.co.yumemi.android.codecheck.designsystem.MainTheme
 import jp.co.yumemi.android.codecheck.ui.common.OwnerIcon
-import jp.co.yumemi.android.codecheck.ui.theme.MainTheme
 import kotlinx.coroutines.coroutineScope
 
 @Composable

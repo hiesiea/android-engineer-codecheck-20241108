@@ -25,8 +25,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import jp.co.yumemi.android.codecheck.R
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
+import jp.co.yumemi.android.codecheck.designsystem.MainTheme
 import jp.co.yumemi.android.codecheck.ui.common.OwnerIcon
-import jp.co.yumemi.android.codecheck.ui.theme.MainTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
