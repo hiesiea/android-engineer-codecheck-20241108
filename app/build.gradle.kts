@@ -42,6 +42,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:data"))
+
     implementation(libs.compose.material3)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
