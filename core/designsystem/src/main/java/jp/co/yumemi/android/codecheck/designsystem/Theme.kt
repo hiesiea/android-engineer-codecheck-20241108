@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui.theme
+package jp.co.yumemi.android.codecheck.designsystem
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

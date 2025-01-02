@@ -14,7 +14,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import jp.co.yumemi.android.codecheck.ui.theme.MainTheme
+import jp.co.yumemi.android.codecheck.designsystem.MainTheme
 
 class RepositoryDetailFragment : Fragment() {
     private val args: RepositoryDetailFragmentArgs by navArgs()
