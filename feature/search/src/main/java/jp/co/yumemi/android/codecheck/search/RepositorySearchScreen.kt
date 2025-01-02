@@ -44,9 +44,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
-import jp.co.yumemi.android.codecheck.data.model.ErrorType
-import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
+import jp.co.yumemi.android.codecheck.core.data.model.DataLoadingState
+import jp.co.yumemi.android.codecheck.core.data.model.ErrorType
+import jp.co.yumemi.android.codecheck.core.data.model.RepositoryItem
 import jp.co.yumemi.android.codecheck.designsystem.MainTheme
 import jp.co.yumemi.android.codecheck.ui.OwnerIcon
 import kotlinx.coroutines.coroutineScope

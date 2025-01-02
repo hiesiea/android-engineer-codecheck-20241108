@@ -2,7 +2,7 @@ package jp.co.yumemi.android.codecheck.detail
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
+import jp.co.yumemi.android.codecheck.core.data.model.RepositoryItem
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner

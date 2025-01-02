@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.data.di
+package jp.co.yumemi.android.codecheck.core.data.di
 
 import dagger.Module
 import dagger.Provides
@@ -10,7 +10,7 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
-import jp.co.yumemi.android.codecheck.data.repository.SearchRepository
+import jp.co.yumemi.android.codecheck.core.data.repository.SearchRepository
 import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 

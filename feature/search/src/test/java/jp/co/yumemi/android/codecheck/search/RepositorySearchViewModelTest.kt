@@ -1,10 +1,10 @@
 package jp.co.yumemi.android.codecheck.search
 
 import app.cash.turbine.test
-import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
-import jp.co.yumemi.android.codecheck.data.model.ErrorType
-import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
-import jp.co.yumemi.android.codecheck.data.repository.SearchRepository
+import jp.co.yumemi.android.codecheck.core.data.model.DataLoadingState
+import jp.co.yumemi.android.codecheck.core.data.model.ErrorType
+import jp.co.yumemi.android.codecheck.core.data.model.RepositoryItem
+import jp.co.yumemi.android.codecheck.core.data.repository.SearchRepository
 import kotlinx.coroutines.test.runTest
 import org.junit.runner.RunWith
 import org.mockito.kotlin.any

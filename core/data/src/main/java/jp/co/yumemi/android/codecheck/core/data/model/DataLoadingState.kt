@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.data.model
+package jp.co.yumemi.android.codecheck.core.data.model
 
 /**
  * データの読み込み状態を表す

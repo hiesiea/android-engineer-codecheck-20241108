@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.data.repository
+package jp.co.yumemi.android.codecheck.core.data.repository
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
@@ -9,7 +9,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.utils.io.ByteReadChannel
-import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
+import jp.co.yumemi.android.codecheck.core.data.model.RepositoryItem
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
 import org.junit.runner.RunWith

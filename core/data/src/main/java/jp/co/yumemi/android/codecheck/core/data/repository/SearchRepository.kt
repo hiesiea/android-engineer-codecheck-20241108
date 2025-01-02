@@ -1,13 +1,13 @@
-package jp.co.yumemi.android.codecheck.data.repository
+package jp.co.yumemi.android.codecheck.core.data.repository
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
-import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
-import jp.co.yumemi.android.codecheck.data.model.SearchRepositoriesResponse
-import jp.co.yumemi.android.codecheck.data.model.toRepositoryItem
+import jp.co.yumemi.android.codecheck.core.data.model.RepositoryItem
+import jp.co.yumemi.android.codecheck.core.data.model.SearchRepositoriesResponse
+import jp.co.yumemi.android.codecheck.core.data.model.toRepositoryItem
 import javax.inject.Inject
 
 class SearchRepository @Inject constructor(

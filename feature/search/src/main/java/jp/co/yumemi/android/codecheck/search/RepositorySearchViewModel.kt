@@ -3,9 +3,9 @@ package jp.co.yumemi.android.codecheck.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
-import jp.co.yumemi.android.codecheck.data.model.ErrorType
-import jp.co.yumemi.android.codecheck.data.repository.SearchRepository
+import jp.co.yumemi.android.codecheck.core.data.model.DataLoadingState
+import jp.co.yumemi.android.codecheck.core.data.model.ErrorType
+import jp.co.yumemi.android.codecheck.core.data.repository.SearchRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

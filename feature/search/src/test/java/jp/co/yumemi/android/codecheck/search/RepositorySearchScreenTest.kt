@@ -9,9 +9,9 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
-import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
-import jp.co.yumemi.android.codecheck.data.model.ErrorType
-import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
+import jp.co.yumemi.android.codecheck.core.data.model.DataLoadingState
+import jp.co.yumemi.android.codecheck.core.data.model.ErrorType
+import jp.co.yumemi.android.codecheck.core.data.model.RepositoryItem
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner

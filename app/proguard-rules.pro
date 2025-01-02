@@ -21,4 +21,4 @@
 #-renamesourcefileattribute SourceFile
 
 # Navigation にて destination 間でデータを渡す場合は難読化するとクラッシュするので、難読化しないようにする
--keepnames class jp.co.yumemi.android.codecheck.data.model.RepositoryItem
+-keepnames class jp.co.yumemi.android.codecheck.core.data.model.RepositoryItem
