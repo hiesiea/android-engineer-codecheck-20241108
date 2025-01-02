@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import jp.co.yumemi.android.codecheck.designsystem.MainTheme
+import jp.co.yumemi.android.codecheck.detail.RepositoryDetailScreen
 
 class RepositoryDetailFragment : Fragment() {
     private val args: RepositoryDetailFragmentArgs by navArgs()
