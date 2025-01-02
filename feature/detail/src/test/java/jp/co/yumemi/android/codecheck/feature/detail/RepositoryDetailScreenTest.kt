@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.detail
+package jp.co.yumemi.android.codecheck.feature.detail
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
