@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui.common
+package jp.co.yumemi.android.codecheck.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -14,7 +14,6 @@ import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
-import jp.co.yumemi.android.codecheck.R
 
 @Composable
 fun OwnerIcon(
@@ -26,7 +25,7 @@ fun OwnerIcon(
     if (LocalInspectionMode.current) {
         // Preview 時
         Image(
-            painter = painterResource(R.drawable.jetbrains),
+            painter = painterResource(id = R.drawable.jetbrains),
             contentDescription = "OwnerIcon",
             modifier = modifier,
         )

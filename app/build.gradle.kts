@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:designsystem"))
+    implementation(project(":core:ui"))
 
     implementation(libs.compose.material3)
     implementation(libs.appcompat)
@@ -55,7 +56,6 @@ dependencies {
     implementation(libs.navigation.ui.ktx)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.slf4j.android)
-    implementation(libs.coil.compose)
 
     debugImplementation(libs.compose.ui.test.manifest)
 
