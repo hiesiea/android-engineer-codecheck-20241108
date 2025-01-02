@@ -43,12 +43,10 @@ android {
 
 dependencies {
     implementation(libs.compose.material3)
-    implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
     implementation(libs.browser)
     implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
