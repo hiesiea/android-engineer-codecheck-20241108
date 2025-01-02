@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:ui"))
     implementation(project(":feature:detail"))
+    implementation(project(":feature:search"))
 
     implementation(libs.compose.material3)
     implementation(libs.appcompat)
