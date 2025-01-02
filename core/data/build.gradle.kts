@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "jp.co.yumemi.android.codecheck.data"
+    namespace = "jp.co.yumemi.android.codecheck.core.data"
 
     defaultConfig {
         consumerProguardFiles("consumer-rules.pro")
