@@ -36,9 +36,6 @@ android {
     buildFeatures {
         buildConfig = true
     }
-    lint {
-        lintConfig = file("lint.xml")
-    }
 }
 
 dependencies {
