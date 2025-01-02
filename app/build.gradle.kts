@@ -53,10 +53,3 @@ dependencies {
     implementation(libs.navigation.ui.ktx)
     implementation(libs.slf4j.android)
 }
-
-tasks.withType<AbstractTestTask> {
-    // Disable unit tests for release build type (Robolectric limitations)
-    if (name == "testReleaseUnitTest") {
-        enabled = false
-    }
-}
