@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.search
+package jp.co.yumemi.android.codecheck.feature.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

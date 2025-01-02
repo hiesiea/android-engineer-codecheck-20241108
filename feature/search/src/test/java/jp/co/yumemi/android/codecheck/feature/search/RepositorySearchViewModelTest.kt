@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.search
+package jp.co.yumemi.android.codecheck.feature.search
 
 import app.cash.turbine.test
 import jp.co.yumemi.android.codecheck.core.data.model.DataLoadingState

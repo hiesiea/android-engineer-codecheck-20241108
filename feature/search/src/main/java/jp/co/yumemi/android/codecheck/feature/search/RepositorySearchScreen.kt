@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.search
+package jp.co.yumemi.android.codecheck.feature.search
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
