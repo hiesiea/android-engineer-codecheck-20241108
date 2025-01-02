@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(project(":core:data"))
+    implementation(project(":core:designsystem"))
 
     implementation(libs.compose.material3)
     implementation(libs.appcompat)
