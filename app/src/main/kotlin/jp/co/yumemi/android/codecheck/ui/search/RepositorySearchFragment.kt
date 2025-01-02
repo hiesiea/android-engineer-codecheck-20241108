@@ -14,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
 import jp.co.yumemi.android.codecheck.designsystem.MainTheme
+import jp.co.yumemi.android.codecheck.search.RepositorySearchScreen
+import jp.co.yumemi.android.codecheck.search.RepositorySearchViewModel
 
 @AndroidEntryPoint
 class RepositorySearchFragment : Fragment() {

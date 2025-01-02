@@ -36,9 +36,6 @@ android {
     buildFeatures {
         buildConfig = true
     }
-    lint {
-        lintConfig = file("lint.xml")
-    }
 }
 
 dependencies {
@@ -46,26 +43,15 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:ui"))
     implementation(project(":feature:detail"))
+    implementation(project(":feature:search"))
 
     implementation(libs.compose.material3)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
     implementation(libs.browser)
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
-    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.slf4j.android)
-
-    debugImplementation(libs.compose.ui.test.manifest)
-
-    testImplementation(libs.robolectric)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.kotlin.test)
-    testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.turbine)
-    testImplementation(libs.compose.ui.test.junit4)
 }
 
 tasks.withType<AbstractTestTask> {

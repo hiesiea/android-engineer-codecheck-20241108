@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui.search
+package jp.co.yumemi.android.codecheck.search
 
 import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem
