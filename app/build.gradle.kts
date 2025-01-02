@@ -43,12 +43,10 @@ android {
 
 dependencies {
     implementation(libs.compose.material3)
-    implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
     implementation(libs.browser)
     implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
@@ -62,7 +60,6 @@ dependencies {
 
     debugImplementation(libs.compose.ui.test.manifest)
 
-    testImplementation(libs.junit)
     testImplementation(libs.robolectric)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlin.test)
@@ -70,9 +67,6 @@ dependencies {
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.turbine)
     testImplementation(libs.compose.ui.test.junit4)
-
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
 }
 
 tasks.withType<AbstractTestTask> {
