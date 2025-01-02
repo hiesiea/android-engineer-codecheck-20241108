@@ -60,7 +60,6 @@ dependencies {
 
     debugImplementation(libs.compose.ui.test.manifest)
 
-    testImplementation(libs.junit)
     testImplementation(libs.robolectric)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlin.test)
