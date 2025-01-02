@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui
+package jp.co.yumemi.android.codecheck.core.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
