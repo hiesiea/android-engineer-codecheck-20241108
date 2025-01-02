@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui.search
+package jp.co.yumemi.android.codecheck.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,9 +13,6 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
-/**
- * [RepositorySearchFragment] で使う
- */
 @HiltViewModel
 class RepositorySearchViewModel @Inject constructor(
     private val searchRepository: SearchRepository,

@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui.search
+package jp.co.yumemi.android.codecheck.search
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -44,7 +44,6 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import jp.co.yumemi.android.codecheck.R
 import jp.co.yumemi.android.codecheck.data.model.DataLoadingState
 import jp.co.yumemi.android.codecheck.data.model.ErrorType
 import jp.co.yumemi.android.codecheck.data.model.RepositoryItem

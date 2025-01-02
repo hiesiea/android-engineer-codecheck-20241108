@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui.search
+package jp.co.yumemi.android.codecheck.search
 
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertIsDisplayed
