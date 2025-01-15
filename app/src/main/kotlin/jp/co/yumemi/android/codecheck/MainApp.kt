@@ -1,8 +1,9 @@
 package jp.co.yumemi.android.codecheck
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun MainApp(modifier: Modifier = Modifier) {
+fun MainApp() {
+    val navController = rememberNavController()
 }
