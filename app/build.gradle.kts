@@ -51,5 +51,6 @@ dependencies {
     implementation(libs.browser)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
+    implementation(libs.navigation.compose)
     implementation(libs.slf4j.android)
 }
