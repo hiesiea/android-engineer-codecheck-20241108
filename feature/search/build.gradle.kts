@@ -3,6 +3,7 @@ plugins {
     id("codecheck.android.library.compose")
     id("codecheck.detekt")
     id("codecheck.android.hilt")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -36,6 +37,7 @@ dependencies {
 
     implementation(libs.compose.material3)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
 
     debugImplementation(libs.compose.ui.test.manifest)
 
