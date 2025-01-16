@@ -46,10 +46,7 @@ dependencies {
     implementation(project(":feature:search"))
 
     implementation(libs.compose.material3)
-    implementation(libs.appcompat)
-    implementation(libs.constraintlayout)
     implementation(libs.browser)
-    implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
     implementation(libs.navigation.compose)
     implementation(libs.slf4j.android)
