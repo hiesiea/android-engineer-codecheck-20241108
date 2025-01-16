@@ -44,6 +44,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import jp.co.yumemi.android.codecheck.core.data.model.DataLoadingState
 import jp.co.yumemi.android.codecheck.core.data.model.ErrorType
 import jp.co.yumemi.android.codecheck.core.data.model.RepositoryItem
@@ -53,6 +54,7 @@ import kotlinx.coroutines.coroutineScope
 
 @Composable
 fun RepositorySearchScreen(
+    viewModel: RepositorySearchViewModel = hiltViewModel(),
     uiState: RepositorySearchUiState,
     modifier: Modifier = Modifier,
     onSearchButtonClick: (String) -> Unit,
