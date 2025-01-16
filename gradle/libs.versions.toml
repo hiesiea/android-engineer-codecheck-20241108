@@ -18,12 +18,14 @@ timber = "5.0.1"
 turbine = "1.2.0"
 detekt = "1.23.7"
 ksp = "2.0.21-1.0.27"
+androidxHiltNavigationCompose = "1.2.0"
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilCompose" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test" }
