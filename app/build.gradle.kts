@@ -5,7 +5,6 @@ plugins {
     id("codecheck.android.hilt")
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.navigation.safeargs.kotlin)
     alias(libs.plugins.compose.compiler)
 }
 
