@@ -3,8 +3,6 @@ plugins {
     id("codecheck.android.application.compose")
     id("codecheck.detekt")
     id("codecheck.android.hilt")
-    alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -40,7 +38,6 @@ android {
 dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:designsystem"))
-    implementation(project(":core:ui"))
     implementation(project(":feature:detail"))
     implementation(project(":feature:search"))
 
