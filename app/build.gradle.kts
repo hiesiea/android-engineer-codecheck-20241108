@@ -3,9 +3,6 @@ plugins {
     id("codecheck.android.application.compose")
     id("codecheck.detekt")
     id("codecheck.android.hilt")
-    alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.navigation.safeargs.kotlin)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -41,15 +38,12 @@ android {
 dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:designsystem"))
-    implementation(project(":core:ui"))
     implementation(project(":feature:detail"))
     implementation(project(":feature:search"))
 
     implementation(libs.compose.material3)
-    implementation(libs.appcompat)
-    implementation(libs.constraintlayout)
     implementation(libs.browser)
-    implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
+    implementation(libs.navigation.compose)
     implementation(libs.slf4j.android)
 }

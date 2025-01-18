@@ -1,5 +1,6 @@
 package jp.co.yumemi.android.codecheck.feature.search
 
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,6 +45,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import jp.co.yumemi.android.codecheck.core.data.model.DataLoadingState
 import jp.co.yumemi.android.codecheck.core.data.model.ErrorType
 import jp.co.yumemi.android.codecheck.core.data.model.RepositoryItem
@@ -51,6 +54,22 @@ import jp.co.yumemi.android.codecheck.core.designsystem.MainTheme
 import jp.co.yumemi.android.codecheck.core.ui.OwnerIcon
 import kotlinx.coroutines.coroutineScope
 
+@Composable
+fun RepositorySearchScreen(
+    viewModel: RepositorySearchViewModel = hiltViewModel(),
+    modifier: Modifier = Modifier,
+    onItemClick: (RepositoryItem) -> Unit,
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    RepositorySearchScreen(
+        uiState = uiState,
+        modifier = modifier,
+        onSearchButtonClick = { viewModel.searchRepositories(it) },
+        onItemClick = onItemClick,
+    )
+}
+
+@VisibleForTesting
 @Composable
 fun RepositorySearchScreen(
     uiState: RepositorySearchUiState,
