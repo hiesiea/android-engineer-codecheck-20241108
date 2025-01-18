@@ -2,7 +2,7 @@
 androidGradlePlugin = "8.7.2"
 browser = "1.8.0"
 coilCompose = "2.7.0"
-composeBom = "2024.10.01"
+composeBom = "2024.12.01"
 kotlin = "2.0.21"
 androidxNavigation = "2.8.3"
 hilt = "2.52"
