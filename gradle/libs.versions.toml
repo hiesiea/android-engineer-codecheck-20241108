@@ -15,7 +15,7 @@ slf4jAndroid = "1.7.36"
 timber = "5.0.1"
 turbine = "1.2.0"
 detekt = "1.23.7"
-ksp = "2.0.21-1.0.27"
+ksp = "2.1.10-1.0.29"
 androidxHiltNavigationCompose = "1.2.0"
 
 [libraries]
